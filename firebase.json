@@ -1,0 +1,28 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": [
+    {
+      "predeploy": [
+        "yarn nx lint qubetime-api",
+        "yarn nx test qubetime-api",
+        "yarn nx run qubetime-api:build:production"
+      ],
+      "codebase": "qubetime-api",
+      "source": "dist/libs/qubetime-api",
+      "runtime": "nodejs20"
+    }
+  ],
+  "emulators": {
+    "firestore": {
+      "port": 5002
+    },
+    "ui": {
+      "enabled": true,
+      "port": 4000
+    },
+    "singleProjectMode": true
+  }
+}
