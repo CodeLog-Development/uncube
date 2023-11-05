@@ -1,0 +1,23 @@
+span {
+  font-family: 'Sometype Mono', monospace;
+  font-size: 64px;
+  line-height: 64px;
+}
+
+.armed {
+  color: #fcfc66;
+}
+
+.running {
+  color: #66fc66;
+}
+
+.stopped {
+  color: #fc6666;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+}

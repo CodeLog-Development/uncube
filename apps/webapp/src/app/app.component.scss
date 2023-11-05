@@ -1,0 +1,28 @@
+.qubetime-topnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 2;
+  display: flex;
+  gap: 10px;
+}
+
+.qubetime-topnav a {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.qubetime-page {
+  z-index: 0;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+@include mat.core();
+@import './theme/variables';
+
+$theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+    density: 0,
+    typography: mat.define-typography-config(),
+  )
+);
+
+@include mat.all-component-themes($theme);
+@include mat.typography-hierarchy($theme);
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

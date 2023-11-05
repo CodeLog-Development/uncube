@@ -1,0 +1,21 @@
+<mat-toolbar
+  class="qubetime-topnav"
+  [class.mat-elevation-z6]="true"
+  color="primary"
+>
+  <button *ngIf="isMobile" mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a mat-button [routerLink]="['/']">
+    <mat-icon>timer</mat-icon>
+    QubeTime
+  </a>
+  <span class="spacer"></span>
+  <a *ngIf="!loggedIn" mat-button (click)="loginClick()">Login</a>
+  <a *ngIf="!loggedIn" mat-button [routerLink]="['/register']">Register</a>
+  <span class="beta-tag">BETA</span>
+</mat-toolbar>
+
+<div class="qubetime-page" [class.mat-typography]="true">
+  <router-outlet></router-outlet>
+</div>

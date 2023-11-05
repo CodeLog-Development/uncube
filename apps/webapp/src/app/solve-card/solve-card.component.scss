@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+@import '../../theme/variables.scss';
+
+.solve-time {
+  font-size: 24px;
+  font-family: 'Sometype Mono', monospace;
+}
+
+.dnf {
+  text-decoration: line-through;
+}

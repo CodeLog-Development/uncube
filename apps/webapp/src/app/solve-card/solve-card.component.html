@@ -1,0 +1,31 @@
+<mat-card
+  appearance="raised"
+  class="solve-card"
+  [class.mat-elevation-z4]="true"
+>
+  <mat-card-content>
+    <button
+      mat-button
+      class="solve-time"
+      (click)="clickSolveTime()"
+      matTooltip="Solve information"
+      matTooltipPosition="above"
+      [matTooltipShowDelay]="500"
+      [class.dnf]="solve.penalty === 'dnf'"
+    >
+      {{ solve | solveTime }}
+    </button>
+
+    <mat-chip-listbox
+      aria-label="Penalty selection"
+      (change)="chipListChange($event)"
+      [value]="solve.penalty"
+    >
+      <mat-chip-option value="+2" color="accent">+2</mat-chip-option>
+      <mat-chip-option value="dnf" color="accent">DNF</mat-chip-option>
+    </mat-chip-listbox>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="discardClick()">DISCARD</button>
+  </mat-card-actions>
+</mat-card>

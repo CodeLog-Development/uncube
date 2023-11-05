@@ -1,0 +1,43 @@
+<mat-drawer-container class="page-container" [autosize]="false">
+  <mat-drawer
+    [mode]="drawerMode"
+    [opened]="isDrawerOpen"
+    class="drawer"
+    [autoFocus]="false"
+    (closedStart)="sidenavClosing()"
+  >
+    <div class="solve-container">
+      <span style="font-size: 18px; font-weight: bold; text-align: center"
+        >Session Solves</span
+      >
+      <codelog-solve-card
+        *ngFor="let solve of solves"
+        [solve]="solve"
+        (discard)="discardSolve(solve)"
+        (penaltyChange)="penaltyChange(solve, $event)"
+      ></codelog-solve-card>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content id="drawer-content">
+    <div class="timer-container">
+      <codelog-timer
+        (timerStopped)="timerStopped($event)"
+        touchTarget="drawer-content"
+      />
+      <codelog-scramble class="scramble-component" [scramble]="scramble" />
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<div class="fab-container">
+  <button
+    mat-fab
+    matTooltip="Manually enter solve"
+    color="accent"
+    class="add-fab"
+    aria-label="Manually add solve"
+    (click)="fabClick()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
