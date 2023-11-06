@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { QubetimeApiModule } from './lib/api.module';
+import { UncubeApiModule } from './lib/api.module';
 import * as cookieParser from 'cookie-parser';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
@@ -15,11 +15,15 @@ const createFunction = async (
 ): Promise<void> => {
   process.env['NO_COLOR'] = 'true';
   const app = await NestFactory.create(
-    QubetimeApiModule,
+    UncubeApiModule,
     new ExpressAdapter(expressInstance),
     {
       cors: {
-        origin: ['https://qubetime.codelog.co.za', 'http://localhost:4200'],
+        origin: [
+          'https://qubetime.codelog.co.za',
+          'https://uncube.codelog.co.za',
+          'http://localhost:4200',
+        ],
         methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE', 'PATCH'],
         credentials: true,
       },
@@ -39,7 +43,7 @@ const createFunction = async (
   await app.init();
 };
 
-export const qubetime = new FunctionBuilder({
+export const api = new FunctionBuilder({
   regions: ['europe-west2'],
 }).https.onRequest(async (request, response) => {
   await createFunction(expressServer);

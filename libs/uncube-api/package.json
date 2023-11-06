@@ -14,7 +14,7 @@
     "tslib": "^2.3.0"
   },
   "scripts": {
-    "emulators": "cd .. && yarn nx build qubetime-api && yarn firebase emulators:start"
+    "emulators": "cd .. && yarn nx build uncube-api && yarn firebase emulators:start"
   },
   "type": "commonjs",
   "main": "./src/index.js",

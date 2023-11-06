@@ -23,7 +23,7 @@ import configuration from './config/configuration';
     AuthModule,
   ],
 })
-export class QubetimeApiModule implements NestModule {
+export class UncubeApiModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(LoggerMiddleware)

@@ -1,14 +1,10 @@
-<mat-toolbar
-  class="qubetime-topnav"
-  [class.mat-elevation-z6]="true"
-  color="primary"
->
+<mat-toolbar class="uncube-topnav" [class.mat-elevation-z6]="true" color="primary">
   <button *ngIf="isMobile" mat-icon-button (click)="toggleSidenav()">
     <mat-icon>menu</mat-icon>
   </button>
   <a mat-button [routerLink]="['/']">
     <mat-icon>timer</mat-icon>
-    QubeTime
+    UnCube
   </a>
   <span class="spacer"></span>
   <a *ngIf="!loggedIn" mat-button (click)="loginClick()">Login</a>
@@ -16,6 +12,6 @@
   <span class="beta-tag">BETA</span>
 </mat-toolbar>
 
-<div class="qubetime-page" [class.mat-typography]="true">
+<div class="uncube-page" [class.mat-typography]="true">
   <router-outlet></router-outlet>
 </div>
