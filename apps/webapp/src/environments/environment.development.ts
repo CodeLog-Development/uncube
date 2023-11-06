@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'http://localhost:5001/codelog-web/europe-west2/qubetime',
+  apiUrl: 'http://localhost:5001/qubetime/europe-west2/api',
 };
