@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+env:
+  INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
