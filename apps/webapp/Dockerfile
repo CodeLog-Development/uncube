@@ -1,5 +1,5 @@
 FROM node:20-slim
-RUN mkdir -p ./dist/qubetime
-COPY  dist/qubetime/ dist/qubetime
+RUN mkdir -p ./dist/apps/webapp
+COPY  dist/apps/webapp/ dist/apps/webapp
 EXPOSE 4000
-CMD ["node", "./dist/qubetime/server/main.js"]
+CMD ["node", "./dist/webapp/server/main.js"]
