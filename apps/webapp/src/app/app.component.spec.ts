@@ -5,6 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TimerModule } from './timer/timer.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AuthModule } from './auth/auth.module';
+import { SidenavService } from './sidenav.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,10 +16,13 @@ describe('AppComponent', () => {
         RouterTestingModule,
         MatToolbarModule,
         MatButtonModule,
-        TimerModule,
         MatIconModule,
+        MatDialogModule,
+        AuthModule,
+        TimerModule,
       ],
       declarations: [AppComponent],
+      providers: [SidenavService],
     }).compileComponents();
   });
 

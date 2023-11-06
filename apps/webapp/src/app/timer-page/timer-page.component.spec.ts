@@ -6,6 +6,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TimerPageRoutingModule } from './timer-page-routing.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SidenavService } from '../sidenav.service';
 
 describe('TimerPageComponent', () => {
   let component: TimerPageComponent;
@@ -16,12 +24,21 @@ describe('TimerPageComponent', () => {
       declarations: [TimerPageComponent],
       imports: [
         BrowserAnimationsModule,
+        FormsModule,
+        CommonModule,
         TimerModule,
+        TimerPageRoutingModule,
+        MatSidenavModule,
         SolveCardModule,
         MatIconModule,
-        MatSidenavModule,
         MatButtonModule,
+        MatTooltipModule,
+        MatDialogModule,
+        MatInputModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
       ],
+      providers: [SidenavService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TimerPageComponent);
