@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'codelog-scramble',
+  selector: 'uncube-scramble',
   template: `<span class="scramble unselectable">{{ scramble }}</span>`,
   styles: [
     `

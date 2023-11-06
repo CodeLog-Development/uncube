@@ -14,7 +14,7 @@ import { User } from './dto/user.dto';
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   @Post()
   async register(@Body() createUserDto: CreateUserDto): Promise<User> {

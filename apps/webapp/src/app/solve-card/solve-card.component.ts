@@ -5,7 +5,7 @@ import { SolveDialogComponent } from './solve-dialog.component';
 import { MatChipListboxChange } from '@angular/material/chips';
 
 @Component({
-  selector: 'codelog-solve-card',
+  selector: 'uncube-solve-card',
   templateUrl: './solve-card.component.html',
   styleUrls: ['./solve-card.component.scss'],
 })
@@ -17,7 +17,7 @@ export class SolveCardComponent {
   @Output()
   penaltyChange = new EventEmitter<SolvePenalty | undefined>();
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
 
   get millis(): number {
     return this.solve?.millis || 0;

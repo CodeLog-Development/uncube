@@ -18,7 +18,7 @@ export class AuthService {
   constructor(
     private firestoreService: FirestoreService,
     private userService: UserService
-  ) { }
+  ) {}
 
   async validateCredentials(email: string, password: string): Promise<boolean> {
     const firestore = this.firestoreService.firestore;

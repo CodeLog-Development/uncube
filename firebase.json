@@ -6,12 +6,12 @@
   "functions": [
     {
       "predeploy": [
-        "yarn nx lint qubetime-api",
-        "yarn nx test qubetime-api",
-        "yarn nx run qubetime-api:build:production"
+        "yarn nx lint uncube-api",
+        "yarn nx test uncube-api",
+        "yarn nx run uncube-api:build:production"
       ],
-      "codebase": "qubetime-api",
-      "source": "dist/libs/qubetime-api",
+      "codebase": "uncube-api",
+      "source": "dist/libs/uncube-api",
       "runtime": "nodejs20"
     }
   ],

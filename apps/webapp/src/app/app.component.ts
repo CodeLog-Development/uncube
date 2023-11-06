@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from './auth/login.dialog';
 
 @Component({
-  selector: 'codelog-root',
+  selector: 'uncube-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

@@ -24,7 +24,7 @@ export class TimeErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'codelog-solve-entry-dialog',
+  selector: 'uncube-solve-entry-dialog',
   template: `
     <h1 mat-dialog-title>Manually enter solve</h1>
     <div mat-dialog-content class="dialog-content">
@@ -90,7 +90,7 @@ export class SolveEntryDialogComponent {
   matcher = new TimeErrorStateMatcher();
   scramble = '';
 
-  constructor(public dialogRef: MatDialogRef<SolveEntryDialogComponent>) {}
+  constructor(public dialogRef: MatDialogRef<SolveEntryDialogComponent>) { }
 
   get millis() {
     const timeStr = this.timeFormControl.value || '';

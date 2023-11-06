@@ -1,5 +1,5 @@
 {
-  "name": "@qubetime/qubetime-api",
+  "name": "@uncube/uncube-api",
   "version": "0.0.1",
   "dependencies": {
     "@nestjs/common": "^10.0.2",

@@ -18,7 +18,7 @@ export class AuthController {
   constructor(
     private authService: AuthService,
     private firestoreService: FirestoreService
-  ) { }
+  ) {}
 
   @Post()
   async login(

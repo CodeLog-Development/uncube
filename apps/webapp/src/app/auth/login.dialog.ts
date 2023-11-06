@@ -14,7 +14,7 @@ import {
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'codelog-login-dialog',
+  selector: 'uncube-login-dialog',
   template: `
     <h1 mat-dialog-title>Login</h1>
     <div mat-dialog-content class="dialog-content">
@@ -89,7 +89,7 @@ export class LoginDialogComponent {
   constructor(
     private authService: AuthService,
     public dialogRef: MatDialogRef<LoginDialogComponent>
-  ) {}
+  ) { }
 
   get valid() {
     return !!(

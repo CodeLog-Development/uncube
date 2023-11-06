@@ -2,13 +2,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable, Subject, catchError, map, of, tap } from 'rxjs';
-import { AuthRequest } from '@qubetime/qubetime-api';
+import { AuthRequest } from '@uncube/uncube-api';
 
 @Injectable()
 export class AuthService {
   private isLoggedIn = new Subject<boolean>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   login(authRequest: AuthRequest): Observable<boolean> {
     return this.http

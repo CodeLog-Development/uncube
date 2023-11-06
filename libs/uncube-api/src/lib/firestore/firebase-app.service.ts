@@ -7,7 +7,7 @@ export class FirebaseAppService implements OnModuleInit {
   private appRef?: app.App;
   private logger = new Logger(FirebaseAppService.name);
 
-  constructor(private configService: ConfigService) { }
+  constructor(private configService: ConfigService) {}
 
   onModuleInit() {
     const serviceAccount =

@@ -1,6 +1,5 @@
 import {
   Component,
-  ElementRef,
   EventEmitter,
   Inject,
   Input,
@@ -18,7 +17,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { MOBILE, WEB } from '..';
 
 @Component({
-  selector: 'codelog-timer',
+  selector: 'uncube-timer',
   template: `
     <div class="timer-container">
       <span [class]="state" [class.unselectable]="true">

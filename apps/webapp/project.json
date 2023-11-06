@@ -2,33 +2,22 @@
   "name": "webapp",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "qubetime",
+  "prefix": "uncube",
   "sourceRoot": "apps/webapp/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/webapp/browser",
         "index": "apps/webapp/src/index.html",
         "main": "apps/webapp/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/webapp/tsconfig.app.json",
-        "assets": [
-          "apps/webapp/src/favicon.ico",
-          "apps/webapp/src/assets"
-        ],
-        "styles": [
-          "apps/webapp/src/styles.scss"
-        ],
-        "allowedCommonJsDependencies": [
-          "cubejs"
-        ],
+        "assets": ["apps/webapp/src/favicon.ico", "apps/webapp/src/assets"],
+        "styles": ["apps/webapp/src/styles.scss"],
+        "allowedCommonJsDependencies": ["cubejs"],
         "scripts": []
       },
       "configurations": {
@@ -84,21 +73,14 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/webapp/**/*.ts",
-          "apps/webapp/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/webapp/**/*.ts", "apps/webapp/**/*.html"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/webapp/jest.config.ts",
         "passWithNoTests": true
@@ -117,9 +99,7 @@
       }
     },
     "server": {
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "executor": "@angular-devkit/build-angular:server",
       "options": {
         "outputPath": "dist/apps/webapp/server",
@@ -163,9 +143,7 @@
     "prerender": {
       "executor": "@nguniversal/builders:prerender",
       "options": {
-        "routes": [
-          "/"
-        ]
+        "routes": ["/"]
       },
       "configurations": {
         "development": {
@@ -181,16 +159,11 @@
     },
     "container": {
       "executor": "@nx-tools/nx-container:build",
-      "dependsOn": [
-        "build",
-        "server"
-      ],
+      "dependsOn": ["build", "server"],
       "options": {
         "engine": "docker",
         "metadata": {
-          "images": [
-            "apps/webapp"
-          ],
+          "images": ["apps/webapp"],
           "load": true,
           "tags": [
             "type=schedule",

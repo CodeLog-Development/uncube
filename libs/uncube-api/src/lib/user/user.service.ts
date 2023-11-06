@@ -8,7 +8,7 @@ import * as argon2 from 'argon2';
 export class UserService {
   private logger = new Logger(UserService.name);
 
-  constructor(private firestoreService: FirestoreService) { }
+  constructor(private firestoreService: FirestoreService) {}
 
   async createUser(createUserDto: CreateUserDto): Promise<User | undefined> {
     const passwordHash = await argon2.hash(createUserDto.password);

@@ -1,4 +1,4 @@
-import { PreloadAllModules, Route, RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const routes: Route[] = [
@@ -20,4 +20,4 @@ const routes: Route[] = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

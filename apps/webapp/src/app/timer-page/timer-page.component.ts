@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Solve, SolvePenalty } from '../solve-card';
 import { ScrambleService } from '../timer/scramble.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SolveEntryDialogComponent } from './solve-entry.dialog';
 
 @Component({
-  selector: 'codelog-timer-page',
+  selector: 'uncube-timer-page',
   templateUrl: './timer-page.component.html',
   styleUrls: ['./timer-page.component.scss'],
 })

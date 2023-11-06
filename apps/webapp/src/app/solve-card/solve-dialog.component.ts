@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Solve } from './solve.interface';
 
 @Component({
-  selector: 'codelog-solve-dialog',
+  selector: 'uncube-solve-dialog',
   template: `
     <h1 mat-dialog-title>Solve</h1>
     <div mat-dialog-content>
@@ -33,7 +33,7 @@ export class SolveDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { solve: Solve },
     private dialogRef: MatDialogRef<SolveDialogComponent>
-  ) {}
+  ) { }
 
   closeClick() {
     this.dialogRef.close();

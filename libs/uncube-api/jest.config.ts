@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'qubetime-api',
+  displayName: 'uncube-api',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

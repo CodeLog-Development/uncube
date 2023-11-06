@@ -9,4 +9,4 @@ import { FirebaseModule } from '../firestore/firebase.module';
   imports: [FirebaseModule],
   exports: [UserService],
 })
-export class UserModule { }
+export class UserModule {}
