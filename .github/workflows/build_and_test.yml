@@ -1,0 +1,27 @@
+name: Build and test
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn nx affected -t lint build test
+
+      - name: Build docker container
+        run: yarn nx container webapp
