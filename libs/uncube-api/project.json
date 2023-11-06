@@ -13,7 +13,7 @@
         "packageJson": "libs/uncube-api/package.json",
         "main": "libs/uncube-api/src/index.ts",
         "assets": [
-          "libs/uncube-api/*.md",
+          "libs/uncube-api/src/lib/mail/templates/**/*",
           {
             "glob": "firebase-service-account.json",
             "input": "libs/uncube-api",

@@ -14,7 +14,7 @@ import { User } from './dto/user.dto';
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   @Post()
   async register(@Body() createUserDto: CreateUserDto): Promise<User> {
@@ -37,7 +37,7 @@ export class UserController {
 
     const createdUser = await this.userService.createUser(createUserDto);
     if (createdUser !== undefined) {
-      return createdUser;
+      return new User(createdUser);
     } else {
       throw new InternalServerErrorException('Failed to create user');
     }
