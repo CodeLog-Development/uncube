@@ -12,7 +12,7 @@
   </a>
   <span class="spacer"></span>
   <a *ngIf="!loggedIn" mat-button (click)="loginClick()">Login</a>
-  <a *ngIf="!loggedIn" mat-button [routerLink]="['/register']">Register</a>
+  <a *ngIf="!loggedIn" mat-button (click)="registerClick()">Register</a>
   <span class="beta-tag">BETA</span>
 </mat-toolbar>
 

@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Register</h1>
+
+<div mat-dialog-content class="dialog-content">
+  <mat-form-field color="accent">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" placeholder="joe@average.net" [formControl]="emailFormControl" />
+
+    <mat-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('email')">Invalid email</mat-error>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <mat-label>Username</mat-label>
+    <input matInput type="text" placeholder="Bob" [formControl]="usernameFormControl" />
+
+    <mat-error *ngIf="usernameFormControl.hasError('required')">Username is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" [formControl]="passwordFormControl" />
+
+    <mat-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required</strong></mat-error>
+    <mat-error *ngIf="passwordFormControl.hasError('minlength')">Must be at least 8 characters</mat-error>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <mat-label>Confirm Password</mat-label>
+    <input matInput type="password" [formControl]="confirmFormControl" />
+
+    <mat-error *ngIf="confirmFormControl.hasError('required')">Please confirm your password</mat-error>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" [disabled]="hasError" (click)="registerClick()">
+    Register
+  </button>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+</div>

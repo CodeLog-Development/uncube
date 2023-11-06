@@ -6,6 +6,7 @@ import { SidenavService } from './sidenav.service';
 import { AuthService } from './auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from './auth/login.dialog';
+import { RegisterDialogComponent } from './auth/register.dialog';
 
 @Component({
   selector: 'uncube-root',
@@ -60,5 +61,9 @@ export class AppComponent implements OnDestroy, OnInit {
 
   loginClick() {
     this.dialog.open(LoginDialogComponent);
+  }
+
+  registerClick() {
+    this.dialog.open(RegisterDialogComponent);
   }
 }
