@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppModule } from '../app.module';
 
 describe('TimerPageComponent', () => {
   let component: TimerPageComponent;
@@ -21,6 +22,7 @@ describe('TimerPageComponent', () => {
         MatIconModule,
         MatSidenavModule,
         MatButtonModule,
+        AppModule,
       ],
     }).compileComponents();
 

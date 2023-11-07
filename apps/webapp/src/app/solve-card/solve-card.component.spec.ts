@@ -5,6 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { PipesModule } from '../pipes/pipes.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 describe('SolveCardComponent', () => {
   let component: SolveCardComponent;
@@ -19,6 +22,9 @@ describe('SolveCardComponent', () => {
         PipesModule,
         MatDialogModule,
         MatChipsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatTooltipModule,
       ],
     }).compileComponents();
 
