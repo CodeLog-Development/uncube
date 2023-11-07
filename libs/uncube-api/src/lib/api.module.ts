@@ -17,7 +17,6 @@ import { MailModule } from './mail/mail.module';
   imports: [
     ThrottlerModule.forRoot([{ ttl: 60000, limit: 100 }]),
     ConfigModule.forRoot({
-      envFilePath: '.env',
       load: [configuration],
     }),
     FirebaseModule,

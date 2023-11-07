@@ -4,7 +4,7 @@ import { User } from '../user';
 
 @Injectable()
 export class MailService {
-  constructor(private mailerService: MailerService) { }
+  constructor(private mailerService: MailerService) {}
 
   async sendUserConfirmation(user: User, token: string) {
     const url = `https://europe-west2-qubetime.cloudfunctions.net/api/confirm/${token}`;

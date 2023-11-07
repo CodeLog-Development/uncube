@@ -13,15 +13,15 @@ import { ConfirmationController } from './confirmation.controller';
     MailerModule.forRootAsync({
       useFactory: async (config: ConfigService) => ({
         transport: {
-          host: config.get('MAIL_HOST'),
+          host: config.get('mailConfig').host,
           secure: true,
           auth: {
-            user: config.get('MAIL_USER'),
-            pass: config.get('MAIL_PASSWORD'),
+            user: config.get('mailConfig').user,
+            pass: config.get('mailConfig').password,
           },
         },
         defaults: {
-          from: `"No Reply" <${config.get('MAIL_FROM')}>`,
+          from: `"No Reply" <${config.get('mailConfig').from}>`,
         },
         template: {
           dir: join(__dirname, 'templates'),
@@ -40,4 +40,4 @@ import { ConfirmationController } from './confirmation.controller';
   providers: [MailService],
   exports: [MailService],
 })
-export class MailModule { }
+export class MailModule {}

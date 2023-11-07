@@ -5,6 +5,13 @@ import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { FunctionBuilder } from 'firebase-functions';
 import { ValidationPipe } from '@nestjs/common';
+import {
+  mailFrom,
+  mailHost,
+  mailPassword,
+  mailUser,
+  serviceAccount,
+} from './lib/config/configuration';
 
 export * from './lib/index';
 
@@ -45,7 +52,11 @@ const createFunction = async (
 
 export const api = new FunctionBuilder({
   regions: ['europe-west2'],
-}).https.onRequest(async (request, response) => {
-  await createFunction(expressServer);
-  expressServer(request, response);
-});
+})
+  .runWith({
+    secrets: [serviceAccount, mailHost, mailUser, mailPassword, mailFrom],
+  })
+  .https.onRequest(async (request, response) => {
+    await createFunction(expressServer);
+    expressServer(request, response);
+  });

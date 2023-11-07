@@ -18,22 +18,25 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(authRequest: AuthRequest): Observable<boolean> {
+  login(authRequest: AuthRequest): Observable<string | undefined> {
     return this.http
-      .post<void>(`${environment.apiUrl}/auth`, authRequest, {
-        observe: 'response',
+      .post<undefined>(`${environment.apiUrl}/auth`, authRequest, {
         withCredentials: true,
       })
       .pipe(
         catchError((err: HttpErrorResponse) => {
           console.error(' 🚀 ~ auth.service.ts → Login failed', err);
-          return of(undefined);
+          return of(err.error.message as string);
         }),
         map((data) => {
-          return !!data?.ok;
+          if (!data) {
+            return undefined;
+          } else {
+            return data;
+          }
         }),
-        tap((success) => {
-          this.isLoggedIn.next(success);
+        tap((data) => {
+          this.isLoggedIn.next(!data);
         })
       );
   }

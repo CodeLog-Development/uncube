@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SidenavService } from './sidenav.service';
 import { AuthModule } from './auth/auth.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -25,9 +26,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatDialogModule,
     AuthModule,
+    MatMenuModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [provideClientHydration(), SidenavService],
 })
-export class AppModule {}
+export class AppModule { }
