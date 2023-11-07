@@ -26,11 +26,7 @@ const createFunction = async (
     new ExpressAdapter(expressInstance),
     {
       cors: {
-        origin: [
-          'https://qubetime.codelog.co.za',
-          'https://uncube.codelog.co.za',
-          'http://localhost:4200',
-        ],
+        origin: true,
         methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE', 'PATCH'],
         credentials: true,
       },
