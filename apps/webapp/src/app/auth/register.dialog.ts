@@ -14,6 +14,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthService } from './auth.service';
 import { catchError, of } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'uncube-register-dialog',
@@ -38,6 +39,7 @@ import { HttpErrorResponse } from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
+    MatProgressBarModule,
   ],
   standalone: true,
 })
@@ -55,6 +57,7 @@ export class RegisterDialogComponent {
   ]);
 
   confirmFormControl = new FormControl('', [Validators.required]);
+  loading = false;
 
   constructor(
     public dialogRef: MatDialogRef<RegisterDialogComponent>,
@@ -79,6 +82,7 @@ export class RegisterDialogComponent {
       return;
     }
 
+    this.loading = true;
     this.authService
       .register({
         email: this.emailFormControl.value || '',
@@ -89,6 +93,7 @@ export class RegisterDialogComponent {
         catchError((err: HttpErrorResponse) => {
           console.log(err);
           this.snackBar.open(`Error: ${err.error.message}`, 'CLOSE');
+          this.loading = false;
           return of(undefined);
         })
       )
@@ -98,6 +103,7 @@ export class RegisterDialogComponent {
             'User registered. Please confirm your email.',
             'CLOSE'
           );
+          this.loading = false;
           this.dialogRef.close();
         }
       });

@@ -12,6 +12,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'uncube-login-dialog',
@@ -53,6 +55,7 @@ import { CommonModule } from '@angular/common';
       </button>
       <button mat-button (click)="dialogRef.close()">Cancel</button>
     </div>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
   `,
   styles: [
     `
@@ -77,6 +80,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
   ],
 })
 export class LoginDialogComponent {
@@ -86,9 +91,12 @@ export class LoginDialogComponent {
   ]);
   passwordFormControl = new FormControl('', [Validators.required]);
 
+  loading = false;
+
   constructor(
     private authService: AuthService,
-    public dialogRef: MatDialogRef<LoginDialogComponent>
+    public dialogRef: MatDialogRef<LoginDialogComponent>,
+    private snackBar: MatSnackBar
   ) { }
 
   get valid() {
@@ -100,13 +108,21 @@ export class LoginDialogComponent {
   }
 
   loginClick() {
+    this.loading = true;
     this.authService
       .login({
         email: this.emailFormControl.value || '',
         password: this.passwordFormControl.value || '',
       })
-      .subscribe((success) => {
-        console.log(success);
+      .subscribe((err) => {
+        if (err) {
+          this.snackBar.open(`Error: ${err}`, 'CLOSE');
+        }
+      })
+      .add({
+        unsubscribe: () => {
+          this.loading = false;
+        },
       });
   }
 }
