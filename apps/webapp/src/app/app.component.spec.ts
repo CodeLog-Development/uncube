@@ -5,9 +5,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TimerModule } from './timer/timer.module';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
-import { AuthModule } from './auth/auth.module';
 import { SidenavService } from './sidenav.service';
+import { MatMenuModule } from '@angular/material/menu';
+import { AuthModule } from './auth/auth.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -20,9 +21,10 @@ describe('AppComponent', () => {
         MatDialogModule,
         AuthModule,
         TimerModule,
+        MatMenuModule,
       ],
-      declarations: [AppComponent],
       providers: [SidenavService],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 

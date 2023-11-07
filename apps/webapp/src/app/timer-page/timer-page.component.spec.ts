@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SidenavService } from '../sidenav.service';
+import { AppModule } from '../app.module';
 
 describe('TimerPageComponent', () => {
   let component: TimerPageComponent;
@@ -37,6 +38,7 @@ describe('TimerPageComponent', () => {
         MatInputModule,
         MatFormFieldModule,
         ReactiveFormsModule,
+        AppModule,
       ],
       providers: [SidenavService],
     }).compileComponents();
