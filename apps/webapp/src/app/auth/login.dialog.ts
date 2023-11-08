@@ -117,6 +117,8 @@ export class LoginDialogComponent {
       .subscribe((err) => {
         if (err) {
           this.snackBar.open(`Error: ${err}`, 'CLOSE');
+        } else {
+          this.dialogRef.close();
         }
       })
       .add({

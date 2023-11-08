@@ -79,4 +79,20 @@ export class UserService {
     const data = user.data();
     return data as User;
   }
+
+  async validateCookie(secret: string): Promise<User | undefined> {
+    const firestore = this.firestoreService.firestore;
+    const cookies = await firestore
+      ?.collection('/cookies')
+      .where('secret', '==', secret)
+      .limit(1)
+      .get();
+
+    if (cookies?.docs.length !== 1) {
+      return undefined;
+    }
+
+    const user: DocumentReference<User> = cookies.docs[0].data()['user'];
+    return (await user.get()).data();
+  }
 }
