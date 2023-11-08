@@ -57,7 +57,7 @@ export class AuthController {
 
     res.cookie('uncube_session', cookie.secret, {
       secure: true,
-      sameSite: 'strict',
+      sameSite: 'none',
       expires: cookie.expires.toDate(),
       httpOnly: true,
       path: '/',
