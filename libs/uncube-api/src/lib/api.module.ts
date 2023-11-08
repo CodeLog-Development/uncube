@@ -13,6 +13,7 @@ import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
 import { MailModule } from './mail/mail.module';
 import { AuthMiddleware } from './auth/auth.middleware';
+import { SolveModule } from './solve/solve.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AuthMiddleware } from './auth/auth.middleware';
     UserModule,
     AuthModule,
     MailModule,
+    SolveModule,
   ],
 })
 export class UncubeApiModule implements NestModule {
