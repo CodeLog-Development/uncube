@@ -17,6 +17,7 @@
     "nodemailer": "^6.9.7",
     "@nestjs-modules/mailer": "^1.9.1",
     "class-transformer": "^0.5.1",
+    "@nestjs/mapped-types": "^2.0.3",
     "argon2": "^0.31.2",
     "class-validator": "^0.14.0"
   },

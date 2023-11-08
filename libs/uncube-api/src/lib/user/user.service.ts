@@ -4,7 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { FirestoreService } from '../firestore/firestore.service';
 import * as argon2 from 'argon2';
 import * as crypto from 'crypto';
-import { DocumentReference } from 'firebase-admin/firestore';
+import { DocumentReference, Timestamp } from 'firebase-admin/firestore';
 import { EmailConfirmationToken } from '../mail/dto/token.dto';
 import { MailService } from '../mail/mail.service';
 
@@ -53,11 +53,11 @@ export class UserService {
     return newUser;
   }
 
-  async findUser(
+  async findUserRef(
     fieldPath: string,
     op: FirebaseFirestore.WhereFilterOp,
     username: string
-  ): Promise<User | undefined> {
+  ): Promise<DocumentReference<User> | undefined> {
     const firestore = this.firestoreService.firestore;
     if (!firestore) {
       this.logger.fatal('There is no available database');
@@ -75,9 +75,16 @@ export class UserService {
       return undefined;
     }
 
-    const user = docs[0];
-    const data = user.data();
-    return data as User;
+    return docs[0].ref as DocumentReference<User>;
+  }
+
+  async findUser(
+    fieldPath: string,
+    op: FirebaseFirestore.WhereFilterOp,
+    username: string
+  ): Promise<User | undefined> {
+    const result = await this.findUserRef(fieldPath, op, username);
+    return (await result?.get())?.data() as User | undefined;
   }
 
   async validateCookie(secret: string): Promise<User | undefined> {
@@ -85,6 +92,7 @@ export class UserService {
     const cookies = await firestore
       ?.collection('/cookies')
       .where('secret', '==', secret)
+      .where('expires', '>=', Timestamp.fromMillis(Date.now()))
       .limit(1)
       .get();
 
