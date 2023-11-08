@@ -41,6 +41,21 @@ export class AuthService {
       );
   }
 
+  whoami(): Observable<User | undefined> {
+    return this.http
+      .get<User | undefined>(`${environment.apiUrl}/user/whoami`, {
+        withCredentials: true,
+      })
+      .pipe(
+        catchError(() => {
+          return of(undefined);
+        }),
+        tap((data) => {
+          this.isLoggedIn.next(data !== undefined);
+        })
+      );
+  }
+
   register(newUser: CreateUserDto): Observable<HttpResponse<Partial<User>>> {
     return this.http.post<Partial<User>>(
       `${environment.apiUrl}/user`,

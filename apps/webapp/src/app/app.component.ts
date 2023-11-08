@@ -52,6 +52,13 @@ export class AppComponent implements OnDestroy, OnInit {
     this.sidenavService.observable.subscribe((isOpen) => {
       this.isSidenavOpen = isOpen;
     });
+    this.authService.whoami().subscribe((data) => {
+      if (data !== undefined) {
+        console.log('We are logged in', data);
+      } else {
+        console.log('Not logged in');
+      }
+    });
   }
 
   ngOnDestroy(): void {
