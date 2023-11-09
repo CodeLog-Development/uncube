@@ -8,6 +8,7 @@ import { SidenavService } from '../sidenav.service';
 import { MatDrawerMode } from '@angular/material/sidenav';
 import { MatDialog } from '@angular/material/dialog';
 import { SolveEntryDialogComponent } from './solve-entry.dialog';
+import { SolveService } from '../solve-card/solve.service';
 
 @Component({
   selector: 'uncube-timer-page',
@@ -25,7 +26,8 @@ export class TimerPageComponent implements OnInit, OnDestroy {
     private breakpointObserver: BreakpointObserver,
     private scrambleService: ScrambleService,
     private sidenavService: SidenavService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private solveService: SolveService
   ) {
     this.breakpointObserver
       .observe([MOBILE, WEB])
@@ -79,7 +81,7 @@ export class TimerPageComponent implements OnInit, OnDestroy {
     return this.isMobile ? this.lastSidenavState : true;
   }
 
-  discardSolve(solve: Solve) {
+  discardSolve(solve: Solve, id?: string) {
     const idx = this.solves.findIndex((x) => x.timestamp === solve.timestamp);
     this.solves.splice(idx, 1);
   }
@@ -101,5 +103,9 @@ export class TimerPageComponent implements OnInit, OnDestroy {
         this.solves.unshift(result);
       }
     });
+  }
+
+  solveUpdate(update: Solve) {
+    this.solveService.update(update);
   }
 }

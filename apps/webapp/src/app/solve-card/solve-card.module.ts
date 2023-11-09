@@ -10,6 +10,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { SolveService } from './solve.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [SolveCardComponent, SolveDialogComponent],
@@ -23,7 +26,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatChipsModule,
     MatTooltipModule,
+    MatIconModule,
+    HttpClientModule,
   ],
   exports: [SolveCardComponent],
+  providers: [SolveService],
 })
-export class SolveCardModule {}
+export class SolveCardModule { }
