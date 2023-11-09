@@ -9,3 +9,13 @@
 .dnf {
   text-decoration: line-through;
 }
+
+.header-row {
+  display: flex;
+  width: 100%;
+  place-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

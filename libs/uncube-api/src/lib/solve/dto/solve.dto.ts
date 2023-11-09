@@ -6,7 +6,7 @@ export class Solve {
   id: string;
   millis: number;
   timestamp: Timestamp;
-  penalty: '+2' | 'dnf' | 'none';
+  penalty?: '+2' | 'dnf';
 
   @Exclude()
   owner: DocumentReference<User>;

@@ -11,5 +11,5 @@ export class CreateSolveDto {
   scramble?: string;
 
   @IsString()
-  penalty: '+2' | 'dnf' | 'none';
+  penalty?: '+2' | 'dnf';
 }

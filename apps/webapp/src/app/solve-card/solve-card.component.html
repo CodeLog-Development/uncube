@@ -1,26 +1,17 @@
-<mat-card
-  appearance="raised"
-  class="solve-card"
-  [class.mat-elevation-z4]="true"
->
+<mat-card appearance="raised" class="solve-card" [class.mat-elevation-z4]="true">
   <mat-card-content>
-    <button
-      mat-button
-      class="solve-time"
-      (click)="clickSolveTime()"
-      matTooltip="Solve information"
-      matTooltipPosition="above"
-      [matTooltipShowDelay]="500"
-      [class.dnf]="solve.penalty === 'dnf'"
-    >
-      {{ solve | solveTime }}
-    </button>
+    <div class="header-row">
+      <button mat-button class="solve-time" (click)="clickSolveTime()" matTooltip="Solve information"
+        matTooltipPosition="above" [matTooltipShowDelay]="500" [class.dnf]="solve.penalty === 'dnf'">
+        {{ solve | solveTime }}
+      </button>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="changed.emit()">
+        <mat-icon class="material-icons-outlined">pending</mat-icon>
+      </button>
+    </div>
 
-    <mat-chip-listbox
-      aria-label="Penalty selection"
-      (change)="chipListChange($event)"
-      [value]="solve.penalty"
-    >
+    <mat-chip-listbox aria-label="Penalty selection" (change)="chipListChange($event)" [value]="solve.penalty">
       <mat-chip-option value="+2" color="accent">+2</mat-chip-option>
       <mat-chip-option value="dnf" color="accent">DNF</mat-chip-option>
     </mat-chip-listbox>
