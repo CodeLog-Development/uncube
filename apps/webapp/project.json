@@ -21,7 +21,8 @@
         "tsConfig": "apps/webapp/tsconfig.app.json",
         "assets": [
           "apps/webapp/src/favicon.ico",
-          "apps/webapp/src/assets"
+          "apps/webapp/src/assets",
+          "apps/webapp/src/manifest.webmanifest"
         ],
         "styles": [
           "apps/webapp/src/styles.scss"
@@ -29,7 +30,9 @@
         "allowedCommonJsDependencies": [
           "cubejs"
         ],
-        "scripts": []
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/webapp/ngsw-config.json"
       },
       "configurations": {
         "production": {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -14,6 +14,7 @@ import { SidenavService } from './sidenav.service';
 import { AuthModule } from './auth/auth.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   imports: [
@@ -27,6 +28,12 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     AuthModule,
     MatMenuModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

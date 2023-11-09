@@ -161,6 +161,18 @@
     rxjs "7.8.1"
     source-map "0.7.4"
 
+"@angular-devkit/core@17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-17.0.0.tgz#99cd048cca37cf4d0cb60a3b6871e19449a8006a"
+  integrity sha512-QUu3LnEi4A8t733v2+I0sLtyBJx3Q7zdTAhaauCbxbFhDid0cbYm8hYsyG/njor1irTPxSJbn6UoetVkwUQZxg==
+  dependencies:
+    ajv "8.12.0"
+    ajv-formats "2.1.1"
+    jsonc-parser "3.2.0"
+    picomatch "3.0.1"
+    rxjs "7.8.1"
+    source-map "0.7.4"
+
 "@angular-devkit/schematics@16.0.1":
   version "16.0.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-16.0.1.tgz#d49387e9e41c9cce98b155da51b0e193333dd178"
@@ -180,6 +192,17 @@
     "@angular-devkit/core" "16.2.9"
     jsonc-parser "3.2.0"
     magic-string "0.30.1"
+    ora "5.4.1"
+    rxjs "7.8.1"
+
+"@angular-devkit/schematics@17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-17.0.0.tgz#bfcc09a1bd145ef978f92d660df89a11e69468d4"
+  integrity sha512-LD7fjDORuBf139/oJ/gSwbIzQPfsm6Y67s1FD+XLi0QXaRt6dw4r7BMD08l1r//oPQofNgbEH4coGVO4NdCL/A==
+  dependencies:
+    "@angular-devkit/core" "17.0.0"
+    jsonc-parser "3.2.0"
+    magic-string "0.30.5"
     ora "5.4.1"
     rxjs "7.8.1"
 
@@ -400,10 +423,26 @@
     tslib "^2.3.0"
     xhr2 "^0.2.0"
 
+"@angular/pwa@^17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@angular/pwa/-/pwa-17.0.0.tgz#1c2e27cbedc08ca141f3d04d659e50cc1392df71"
+  integrity sha512-Zkp0zuR54iJqXgJINUvAYttdyeOIZyF00SMoTOw0aaNCsP4fHE0h9PhIUjmL06pDm3WrWYzAN5NHUqN3cCYzgw==
+  dependencies:
+    "@angular-devkit/schematics" "17.0.0"
+    "@schematics/angular" "17.0.0"
+    parse5-html-rewriting-stream "7.0.0"
+
 "@angular/router@~16.2.0":
   version "16.2.12"
   resolved "https://registry.yarnpkg.com/@angular/router/-/router-16.2.12.tgz#2f4cae64ddb7f998832aa340dd3f843cfb85cbc8"
   integrity sha512-aU6QnYSza005V9P3W6PpkieL56O0IHps96DjqI1RS8yOJUl3THmokqYN4Fm5+HXy4f390FN9i6ftadYQDKeWmA==
+  dependencies:
+    tslib "^2.3.0"
+
+"@angular/service-worker@~16.2.0":
+  version "16.2.12"
+  resolved "https://registry.yarnpkg.com/@angular/service-worker/-/service-worker-16.2.12.tgz#359e72693de7d1e8015d1beb02689753ede96de6"
+  integrity sha512-o0z0s4c76NmRASa+mUHn/q6vUKQNa06mGmLBDKm84vRQ1sQ2TJv+R1p8K9WkiM5mGy6tjQCDOgaz13TcxMFWOQ==
   dependencies:
     tslib "^2.3.0"
 
@@ -4100,6 +4139,15 @@
   dependencies:
     "@angular-devkit/core" "16.2.9"
     "@angular-devkit/schematics" "16.2.9"
+    jsonc-parser "3.2.0"
+
+"@schematics/angular@17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-17.0.0.tgz#63ddf8bfbb3b117fe7a355bd22b43d2c9ff7f0ee"
+  integrity sha512-9jKU5x/WzaBsfSkUowK1X74FqtMXa6+A60XgW4ACO8i6fwKfPeS+tIrAieeYOX80/njBh7I5CvcpHmWA2SbcXQ==
+  dependencies:
+    "@angular-devkit/core" "17.0.0"
+    "@angular-devkit/schematics" "17.0.0"
     jsonc-parser "3.2.0"
 
 "@selderee/plugin-htmlparser2@^0.11.0":
@@ -12513,7 +12561,7 @@ magic-string@0.30.1:
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.15"
 
-magic-string@~0.30.2:
+magic-string@0.30.5, magic-string@~0.30.2:
   version "0.30.5"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.30.5.tgz#1994d980bd1c8835dc6e78db7cbd4ae4f24746f9"
   integrity sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==
@@ -14683,6 +14731,11 @@ picomatch@2.3.1, picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3, picomatch
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
+
+picomatch@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-3.0.1.tgz#817033161def55ec9638567a2f3bbc876b3e7516"
+  integrity sha512-I3EurrIQMlRc9IaAZnqRR044Phh2DXY+55o7uJ0V+hYZAcQYSuFWsc9q5PvyDHUSCe1Qxn/iBz+78s86zWnGag==
 
 pify@^2.2.0, pify@^2.3.0:
   version "2.3.0"
