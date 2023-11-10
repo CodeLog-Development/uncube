@@ -3,11 +3,11 @@ import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { TimerModule } from './timer/timer.module';
 import { MatIconModule } from '@angular/material/icon';
 import { SidenavService } from './sidenav.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthModule } from './auth/auth.module';
+import { TimerModule } from './timer/timer.module';
 import { MatDialogModule } from '@angular/material/dialog';
 
 describe('AppComponent', () => {
@@ -17,11 +17,12 @@ describe('AppComponent', () => {
         RouterTestingModule,
         MatToolbarModule,
         MatButtonModule,
-        TimerModule,
         MatIconModule,
         MatMenuModule,
         AuthModule,
         MatDialogModule,
+        AuthModule,
+        TimerModule,
       ],
       providers: [SidenavService],
       declarations: [AppComponent],
