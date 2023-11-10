@@ -54,7 +54,7 @@
     "@angular/compiler-cli": "~16.2.0",
     "@angular/language-service": "~16.2.0",
     "@nx/cypress": "17.0.3",
-    "@nx/eslint": "17.0.3",
+    "@nx/eslint": "17.1.1",
     "@nx/eslint-plugin": "17.0.3",
     "@nx/jest": "17.0.3",
     "@nx/js": "17.0.3",
