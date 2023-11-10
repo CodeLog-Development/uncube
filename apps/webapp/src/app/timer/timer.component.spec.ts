@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TimerComponent } from './timer.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('TimerComponent', () => {
   let component: TimerComponent;
@@ -9,7 +13,14 @@ describe('TimerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TimerComponent],
-      imports: [PipesModule],
+      imports: [
+        PipesModule,
+        FormsModule,
+        CommonModule,
+        PipesModule,
+        MatButtonModule,
+        MatIconModule,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TimerComponent);

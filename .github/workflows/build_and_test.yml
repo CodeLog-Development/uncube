@@ -1,0 +1,32 @@
+name: Build and test
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+
+env:
+  INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn nx affected -t lint build test
+
+      - name: Build docker container
+        run: yarn nx container webapp
