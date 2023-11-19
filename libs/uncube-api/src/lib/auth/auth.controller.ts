@@ -12,6 +12,7 @@ import { Response } from 'express';
 import { FirestoreService } from '../firestore/firestore.service';
 import { User } from '../user';
 import { DocumentReference } from 'firebase-admin/firestore';
+import * as argon2 from 'argon2';
 
 @Controller('auth')
 export class AuthController {
@@ -49,6 +50,10 @@ export class AuthController {
     const userData = user.docs[0].data() as User;
     if (!userData.emailVerified) {
       throw new BadRequestException('Email has not been verified');
+    }
+
+    if (!(await argon2.verify(userData.passwordHash, authRequest.password))) {
+      throw new BadRequestException('Incorrect password or email');
     }
 
     const cookie = await this.authService.generateCookie(
