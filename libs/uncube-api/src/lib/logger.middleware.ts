@@ -11,10 +11,11 @@ export class LoggerMiddleware implements NestMiddleware {
     );
     if (Object.keys(req.body).length > 0) {
       const body = req.body;
-      if (body.password) {
-        body.password = '<redacted>';
+      const copy = JSON.parse(JSON.stringify(body));
+      if (copy.password) {
+        copy.password = '<redacted>';
       }
-      this.logger.log('Request body: ', body);
+      this.logger.log('Request body: ', copy);
     }
 
     next();
