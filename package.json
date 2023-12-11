@@ -25,7 +25,7 @@
     "@nguniversal/express-engine": "^16.2.0",
     "@nx-tools/container-metadata": "^5.1.0",
     "@nx-tools/nx-container": "^5.1.0",
-    "@nx/angular": "17.0.3",
+    "@nx/angular": "17.2.0",
     "@nx/nest": "^17.0.3",
     "@types/cookie-parser": "^1.4.5",
     "ajv": "8.12.0",
