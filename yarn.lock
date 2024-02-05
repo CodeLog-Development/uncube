@@ -3507,6 +3507,14 @@
     nx "17.0.3"
     tslib "^2.3.0"
 
+"@nrwl/tao@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-18.0.1.tgz#a212e247bd6fc1bacfc8780d40e5ac7df3ec79e5"
+  integrity sha512-marSAWRyBAiXciwE+893ptwB6kHR+BKxqERBvH6/+2TWhbnOdC8Czf2VnmQIgIjL+bg+76UUZPt5B2r+qGfeAg==
+  dependencies:
+    nx "18.0.1"
+    tslib "^2.3.0"
+
 "@nrwl/web@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nrwl/web/-/web-17.0.3.tgz#66251a19613f0958fbe6752c325d8f1af0c88f02"
@@ -3755,50 +3763,100 @@
   resolved "https://registry.yarnpkg.com/@nx/nx-darwin-arm64/-/nx-darwin-arm64-17.0.3.tgz#3d9f38be01dd8bca31d994af9533623a86a32fe9"
   integrity sha512-KA75JC/hgkt9qwK4dnN1tlaTXWdYItkNMjji6YjkyAYabbLKQKVcQoPocYP/RB/Gng+vNslXwuug2atgxDf43g==
 
+"@nx/nx-darwin-arm64@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-darwin-arm64/-/nx-darwin-arm64-18.0.1.tgz#efb3ea8ec9c8aba8cd6644133967056bac21a2b3"
+  integrity sha512-8/fRlTmOLrYyMCwIF/gEU/lYjA5pJ3hVDhmHpCy+VBvCHSJFF2JpFZMOV17XADirlqdlUDiuK1/ZueaTZAUcNg==
+
 "@nx/nx-darwin-x64@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nx/nx-darwin-x64/-/nx-darwin-x64-17.0.3.tgz#9a0b61a60d3ef96381fe4296e8f819f615a3835b"
   integrity sha512-YVWk9jNibD7fzn8oNBl/UNu8NEfcVwFo5wiNyfOql495yP0tyGdZNHD4i/7aS2Y654G1JYDRf7TutJ7wWFU8bg==
+
+"@nx/nx-darwin-x64@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-darwin-x64/-/nx-darwin-x64-18.0.1.tgz#3a4ba392bdc39cce2927237163597bddc19a7c8e"
+  integrity sha512-ejOCxw2wmQimrxrgmsJD+RbblZCnstEfXzLCcqoIgxvuZJjNGvePQJ8INVFq8nFY/imGVFp2YcEiKX5HO6mvjg==
 
 "@nx/nx-freebsd-x64@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nx/nx-freebsd-x64/-/nx-freebsd-x64-17.0.3.tgz#dcbf9a2dbdd052077639c45fedb9603544ee0231"
   integrity sha512-yiYkfY+3IrlBrlaXN6SO4Fnb0a+Ti+FPwAqRPpH6q3uTCh0NmNgE99ydtT31ZbgCF1ZwRK8NdCbuNO3w9uznwA==
 
+"@nx/nx-freebsd-x64@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-freebsd-x64/-/nx-freebsd-x64-18.0.1.tgz#c1e446f3be3ec899e90e2c440baa3fcbcb554ba8"
+  integrity sha512-Hq64UBjbFN02dLCp12vzNLAx7U94p+NvuV3uh+G1Z9BpCD6FDIgoELY20J37wuz4H7B36vJgXPshWnGEw+XNdA==
+
 "@nx/nx-linux-arm-gnueabihf@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nx/nx-linux-arm-gnueabihf/-/nx-linux-arm-gnueabihf-17.0.3.tgz#43ae549104f17173c44e4306a761b9043a89cb0b"
   integrity sha512-x4h6QJlESJZ0bigUlxNEVyi7F/VWQQx+1IBptofXhK5eTOPjJ5qgINdM38AZg+kBJDz5XOVMDejg6RzHlhs0Tg==
+
+"@nx/nx-linux-arm-gnueabihf@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-linux-arm-gnueabihf/-/nx-linux-arm-gnueabihf-18.0.1.tgz#8b469c6db49592ff18141bc15d23d889aacf30ee"
+  integrity sha512-dPC2PTFuumglw8ZbkURRU+eksEAAyV5SyUcFnn1T9Il9+V1F1aZ9yQ0Yjg3YpMBHHkJO2hNgNjHTZp2hMTkW4A==
 
 "@nx/nx-linux-arm64-gnu@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nx/nx-linux-arm64-gnu/-/nx-linux-arm64-gnu-17.0.3.tgz#4598e95ea48fa3c3e5ce9b0d997c28843893806a"
   integrity sha512-1lysnsZv9FS+9fciK0qh5PhsQ8U+vyFoR/jiJl+3vqYNUwEmNLD0VEAZzpZL2SJXQqD5E0bjuQpYxiD7YRXImQ==
 
+"@nx/nx-linux-arm64-gnu@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-linux-arm64-gnu/-/nx-linux-arm64-gnu-18.0.1.tgz#aa289005cbcac87eaad3e783fdebd1f671a8e3df"
+  integrity sha512-dX5ZF7OAFcE0CnWKOGWWD8yJ9Lz62EdSXafMwZgGWMlgTC1EBF5Rugg224LkCohl9J6Y9JPL6LGNzQsNEDu/oA==
+
 "@nx/nx-linux-arm64-musl@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nx/nx-linux-arm64-musl/-/nx-linux-arm64-musl-17.0.3.tgz#3e0cb754f70b2bba6c0c165aead639d85a1ff560"
   integrity sha512-0/bvSpbc4vOy9E24fu0ajDGe3SO8lmLtlxjXwGRcnzlt/MWM8sazoO0lX163/X2wF6tuL6+HXHOr6AeqsdeRXQ==
+
+"@nx/nx-linux-arm64-musl@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-linux-arm64-musl/-/nx-linux-arm64-musl-18.0.1.tgz#64017e517881d95d742624b4f0d9f965f2e7d483"
+  integrity sha512-86jV6SOUdWSvNnQ7QQVeNnSgANpZ+cTJQ4gWnVMkR6DKn2wmneMuChyWuK6I1qTbVMjH6qoclx4zHF51I6S6yQ==
 
 "@nx/nx-linux-x64-gnu@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nx/nx-linux-x64-gnu/-/nx-linux-x64-gnu-17.0.3.tgz#14832b543b7f96d9b1eba24afdc59afe0fd34588"
   integrity sha512-tKO6MYUxpUsHMuZrYy8hG20RIOdBY3kyEK8wxH8JZZaXKeYUK+5vv5DavWpY5wuu2jffNIJNsbUzcrqOlcbDOg==
 
+"@nx/nx-linux-x64-gnu@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-linux-x64-gnu/-/nx-linux-x64-gnu-18.0.1.tgz#16a37decf2208b8f3ddb66dbfb4cc665c1abd919"
+  integrity sha512-yvfifJYIJDgaiiWtrpGY7Ggd/wZC61zSunIMmzVyvckDa9NtjtsesYzh05oGy/FHht1avvOKEKrW7VTGOaVNpw==
+
 "@nx/nx-linux-x64-musl@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nx/nx-linux-x64-musl/-/nx-linux-x64-musl-17.0.3.tgz#3b89e9130819db1c98b5f20f95d21defc78ac737"
   integrity sha512-H88yBLrI51m6NGoCkpBYhacRyTBfDuf7x00SnxSfD1yLlxCazPUG7CGkMedpzXo10YHxCFvg7B/Fa23DRRleUg==
+
+"@nx/nx-linux-x64-musl@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-linux-x64-musl/-/nx-linux-x64-musl-18.0.1.tgz#d6ba07a277169693249eaf12bb414f3712f1334e"
+  integrity sha512-DZl0pJzla6y6Cr9SWpjLHeSkOefUmt4AC+ag1aqWWO3HSei7dtIBQ2fvM6C26Z8TMD75kXSpCd2nJmJSrb3gYw==
 
 "@nx/nx-win32-arm64-msvc@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nx/nx-win32-arm64-msvc/-/nx-win32-arm64-msvc-17.0.3.tgz#8a8000602294bffef35a604d7fdb1df46f4c565b"
   integrity sha512-bKzmzjvgLB4IzLWTySqXgBgXawfw0ZSjUkscFQ3ZHrK9loMba1Ue8Ugy2DktlkUrCyPmGSot+YZViTzWP75C3w==
 
+"@nx/nx-win32-arm64-msvc@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-win32-arm64-msvc/-/nx-win32-arm64-msvc-18.0.1.tgz#0d84cc0a48274f16260c70973e02d96fe81f6d39"
+  integrity sha512-fFUmqytVq/jUg6+f0QdnCTyjswNnDKSVeePvsLHU0us6ihmt7QgQS9x/xb41mXFSYLpUSU/ESZhpn7Ao3bdaAQ==
+
 "@nx/nx-win32-x64-msvc@17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@nx/nx-win32-x64-msvc/-/nx-win32-x64-msvc-17.0.3.tgz#773639f3d271019fa4b38417f7ed23f50359bc78"
   integrity sha512-SJssAOyUM1IW9t84/Uzau9JHo14hnG5mxvcrborNGlLq+WnP0jzISVs7gvV2xWZ9j1JemxA5KLbkMuIkJyR6qQ==
+
+"@nx/nx-win32-x64-msvc@18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@nx/nx-win32-x64-msvc/-/nx-win32-x64-msvc-18.0.1.tgz#2f5a5573a5c31473a7fbc41955bb84633687ded6"
+  integrity sha512-vCzMpSfJNvAuK2LNW44XVV77GMI8anrVY9XQAFH5TmEYmsHs9NcyPYJL2QfjD/0oiGhtmepd9GfZJvr95SJ3xQ==
 
 "@nx/web@17.0.3":
   version "17.0.3"
@@ -5633,12 +5691,12 @@ axios@0.21.4:
   dependencies:
     follow-redirects "^1.14.0"
 
-axios@^1.5.1:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.0.tgz#f1e5292f26b2fd5c2e66876adc5b06cdbd7d2102"
-  integrity sha512-EZ1DYihju9pwVB+jg67ogm+Tmqc6JmhamRN6I4Zt8DfZu5lbcQGw3ozH9lFejSJgs/ibaef3A9PMXPLeefFGJg==
+axios@^1.5.1, axios@^1.6.0:
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.7.tgz#7b48c2e27c96f9c68a2f8f31e2ab19f59b06b0a7"
+  integrity sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==
   dependencies:
-    follow-redirects "^1.15.0"
+    follow-redirects "^1.15.4"
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
@@ -8793,10 +8851,15 @@ fn.name@1.x.x:
   resolved "https://registry.yarnpkg.com/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.15.0:
+follow-redirects@^1.0.0, follow-redirects@^1.14.0:
   version "1.15.3"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.3.tgz#fe2f3ef2690afce7e82ed0b44db08165b207123a"
   integrity sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==
+
+follow-redirects@^1.15.4:
+  version "1.15.5"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.5.tgz#54d4d6d062c0fa7d9d17feb008461550e3ba8020"
+  integrity sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -12220,6 +12283,13 @@ minimatch@3.0.5:
   dependencies:
     brace-expansion "^1.1.7"
 
+minimatch@9.0.3, minimatch@^9.0.0, minimatch@^9.0.1:
+  version "9.0.3"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.3.tgz#a6e00c3de44c3a542bfaae70abfc22420a6da825"
+  integrity sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==
+  dependencies:
+    brace-expansion "^2.0.1"
+
 minimatch@^3.0.2, minimatch@^3.0.4, minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
@@ -12238,13 +12308,6 @@ minimatch@^6.1.6:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-6.2.0.tgz#2b70fd13294178c69c04dfc05aebdb97a4e79e42"
   integrity sha512-sauLxniAmvnhhRjFwPNnJKaPFYyddAgbYdeUpHULtCT/GhzdCx/MDNy+Y40lBxTQUrMzDE8e0S43Z5uqfO0REg==
-  dependencies:
-    brace-expansion "^2.0.1"
-
-minimatch@^9.0.0, minimatch@^9.0.1:
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.3.tgz#a6e00c3de44c3a542bfaae70abfc22420a6da825"
-  integrity sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==
   dependencies:
     brace-expansion "^2.0.1"
 
@@ -13089,6 +13152,57 @@ nx@17.0.3:
     "@nx/nx-linux-x64-musl" "17.0.3"
     "@nx/nx-win32-arm64-msvc" "17.0.3"
     "@nx/nx-win32-x64-msvc" "17.0.3"
+
+nx@18.0.1:
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/nx/-/nx-18.0.1.tgz#e813654740c03144f24cb816df0742db686a592d"
+  integrity sha512-AtcM7JmBC82O17WMxuu9JJxEKTcsMII1AMgxCeiCWcW22wHd3EhIn5Hg1iSFv9ftkSSd8YgHeqTciRbdTqbxpA==
+  dependencies:
+    "@nrwl/tao" "18.0.1"
+    "@yarnpkg/lockfile" "^1.1.0"
+    "@yarnpkg/parsers" "3.0.0-rc.46"
+    "@zkochan/js-yaml" "0.0.6"
+    axios "^1.6.0"
+    chalk "^4.1.0"
+    cli-cursor "3.1.0"
+    cli-spinners "2.6.1"
+    cliui "^8.0.1"
+    dotenv "~16.3.1"
+    dotenv-expand "~10.0.0"
+    enquirer "~2.3.6"
+    figures "3.2.0"
+    flat "^5.0.2"
+    fs-extra "^11.1.0"
+    ignore "^5.0.4"
+    jest-diff "^29.4.1"
+    js-yaml "4.1.0"
+    jsonc-parser "3.2.0"
+    lines-and-columns "~2.0.3"
+    minimatch "9.0.3"
+    node-machine-id "1.1.12"
+    npm-run-path "^4.0.1"
+    open "^8.4.0"
+    ora "5.3.0"
+    semver "^7.5.3"
+    string-width "^4.2.3"
+    strong-log-transformer "^2.1.0"
+    tar-stream "~2.2.0"
+    tmp "~0.2.1"
+    tsconfig-paths "^4.1.2"
+    tslib "^2.3.0"
+    yargs "^17.6.2"
+    yargs-parser "21.1.1"
+  optionalDependencies:
+    "@nx/nx-darwin-arm64" "18.0.1"
+    "@nx/nx-darwin-x64" "18.0.1"
+    "@nx/nx-freebsd-x64" "18.0.1"
+    "@nx/nx-linux-arm-gnueabihf" "18.0.1"
+    "@nx/nx-linux-arm64-gnu" "18.0.1"
+    "@nx/nx-linux-arm64-musl" "18.0.1"
+    "@nx/nx-linux-x64-gnu" "18.0.1"
+    "@nx/nx-linux-x64-musl" "18.0.1"
+    "@nx/nx-win32-arm64-msvc" "18.0.1"
+    "@nx/nx-win32-x64-msvc" "18.0.1"
 
 oauth-sign@~0.9.0:
   version "0.9.0"
