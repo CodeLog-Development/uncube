@@ -1,0 +1,7 @@
+procs:
+  api:
+    shell: "yarn nx run uncube-api:emulators"
+    autostart: false
+  webapp:
+    shell: "yarn nx serve-ssr webapp"
+    autostart: false
