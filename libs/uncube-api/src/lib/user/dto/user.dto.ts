@@ -7,4 +7,8 @@ export class User {
 
   @Exclude()
   passwordHash: string;
+
+  constructor(partial: Partial<User>) {
+    Object.assign(this, partial);
+  }
 }

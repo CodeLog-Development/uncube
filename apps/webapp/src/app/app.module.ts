@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -13,6 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { SidenavService } from './sidenav.service';
 import { AuthModule } from './auth/auth.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -25,9 +28,16 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatDialogModule,
     AuthModule,
+    MatMenuModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  providers: [provideClientHydration(), SidenavService],
+  providers: [provideClientHydration(), provideHttpClient(withFetch(), withInterceptorsFromDi()), SidenavService],
 })
-export class AppModule {}
+export class AppModule { }

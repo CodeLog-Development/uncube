@@ -13,9 +13,11 @@ export class SolveCardComponent {
   @Input({ required: true })
   solve: Solve = { millis: 0, timestamp: 0, scramble: '' };
   @Output()
-  discard = new EventEmitter<void>();
+  discard = new EventEmitter<string>();
   @Output()
   penaltyChange = new EventEmitter<SolvePenalty | undefined>();
+  @Output()
+  changed = new EventEmitter<Solve>();
 
   constructor(private dialog: MatDialog) { }
 
@@ -32,7 +34,7 @@ export class SolveCardComponent {
   }
 
   discardClick() {
-    this.discard.emit();
+    this.discard.emit(this.solve.id || '');
   }
 
   clickSolveTime() {
@@ -47,5 +49,6 @@ export class SolveCardComponent {
   chipListChange(event: MatChipListboxChange) {
     this.solve.penalty = event.value;
     this.penaltyChange.emit(event.value);
+    this.changed.emit(this.solve);
   }
 }

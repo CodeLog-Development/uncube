@@ -18,7 +18,7 @@ export class AuthController {
   constructor(
     private authService: AuthService,
     private firestoreService: FirestoreService
-  ) {}
+  ) { }
 
   @Post()
   async login(
@@ -46,17 +46,22 @@ export class AuthController {
       );
     }
 
+    const userData = user.docs[0].data() as User;
+    if (!userData.emailVerified) {
+      throw new BadRequestException('Email has not been verified');
+    }
+
     const cookie = await this.authService.generateCookie(
       user.docs[0].ref as DocumentReference<User>
     );
 
-    res.cookie('alan_backend', cookie, {
+    res.cookie('uncube_session', cookie.secret, {
       secure: true,
-      sameSite: 'strict',
+      sameSite: 'none',
       expires: cookie.expires.toDate(),
       httpOnly: true,
       path: '/',
     });
-    res.status(200);
+    res.status(200).end();
   }
 }

@@ -3,8 +3,8 @@
     (closedStart)="sidenavClosing()">
     <div class="solve-container">
       <span style="font-size: 18px; font-weight: bold; text-align: center">Session Solves</span>
-      <uncube-solve-card *ngFor="let solve of solves" [solve]="solve" (discard)="discardSolve(solve)"
-        (penaltyChange)="penaltyChange(solve, $event)"></uncube-solve-card>
+      <uncube-solve-card *ngFor="let solve of solves" [solve]="solve" (discard)="discardSolve(solve, $event)"
+        (changed)="solveUpdate($event)" (penaltyChange)="penaltyChange(solve, $event)"></uncube-solve-card>
     </div>
   </mat-drawer>
   <mat-drawer-content id="drawer-content">

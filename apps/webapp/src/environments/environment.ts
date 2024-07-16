@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: '',
+  apiUrl: 'https://europe-west2-qubetime.cloudfunctions.net/api',
 };

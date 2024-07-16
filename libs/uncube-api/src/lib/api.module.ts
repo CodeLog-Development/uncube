@@ -11,6 +11,9 @@ import { LoggerMiddleware } from './logger.middleware';
 import { FirebaseModule } from './firestore/firebase.module';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
+import { MailModule } from './mail/mail.module';
+import { AuthMiddleware } from './auth/auth.middleware';
+import { SolveModule } from './solve/solve.module';
 
 @Module({
   imports: [
@@ -21,12 +24,16 @@ import configuration from './config/configuration';
     FirebaseModule,
     UserModule,
     AuthModule,
+    MailModule,
+    SolveModule,
   ],
 })
 export class UncubeApiModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(LoggerMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL })
+      .apply(AuthMiddleware)
       .forRoutes({ path: '*', method: RequestMethod.ALL });
   }
 }
