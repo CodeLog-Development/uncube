@@ -15,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -37,6 +38,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  providers: [provideClientHydration(), SidenavService],
+  providers: [provideClientHydration(), provideHttpClient(withFetch(), withInterceptorsFromDi()), SidenavService],
 })
 export class AppModule { }

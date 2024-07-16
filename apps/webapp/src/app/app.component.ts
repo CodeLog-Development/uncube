@@ -7,6 +7,7 @@ import { AuthService } from './auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from './auth/login.dialog';
 import { RegisterDialogComponent } from './auth/register.dialog';
+import { Platform } from '@angular/cdk/platform';
 
 @Component({
   selector: 'uncube-root',
@@ -23,7 +24,8 @@ export class AppComponent implements OnDestroy, OnInit {
     private breakpointObserver: BreakpointObserver,
     private sidenavService: SidenavService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private platform: Platform
   ) {
     this.breakpointObserver
       .observe([MOBILE, WEB])
@@ -52,6 +54,11 @@ export class AppComponent implements OnDestroy, OnInit {
     this.sidenavService.observable.subscribe((isOpen) => {
       this.isSidenavOpen = isOpen;
     });
+
+    if (!this.platform.isBrowser) {
+      return;
+    }
+
     this.authService.whoami().subscribe((data) => {
       if (data !== undefined) {
         console.log('We are logged in', data);
