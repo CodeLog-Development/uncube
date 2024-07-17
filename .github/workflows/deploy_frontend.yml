@@ -40,9 +40,9 @@ jobs:
         run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
 
       - name: Build frontend Docker container
-        run: yarn nx container qubetime
+        run: yarn nx container webapp
 
-      - run: docker tag qubetime:main ${{ env.GAR_LOCATION }}
+      - run: docker tag webapp:main ${{ env.GAR_LOCATION }}
       - run: docker push ${{ env.GAR_LOCATION }}
 
       - id: deploy
