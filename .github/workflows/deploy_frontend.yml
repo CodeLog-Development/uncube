@@ -1,0 +1,78 @@
+name: Build and deploy
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: qubetime
+  REGION: europe-west4
+  GAR_LOCATION: europe-west4-docker.pkg.dev/qubetime/qubetime-ng-universal/qubetime
+  INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  deploy_frontend:
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
+
+      - name: Setup Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Docker auth
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Build frontend Docker container
+        run: yarn nx container qubetime
+
+      - run: docker tag qubetime:main ${{ env.GAR_LOCATION }}
+      - run: docker push ${{ env.GAR_LOCATION }}
+
+      - id: deploy
+        uses: 'google-github-actions/deploy-cloudrun@v2'
+        with:
+          service: 'qubetime'
+          image: '${{ env.REGION }}-docker.pkg.dev/qubetime/qubetime-ng-universal/qubetime:latest'
+          region: ${{ env.REGION }}
+
+  # deploy_backend:
+  #   runs-on: ubuntu-latest
+  #   environment: Production
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #
+  #     - name: Setup node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #
+  #     - name: Install dependencies
+  #       run: yarn install --frozen-lockfile
+  #
+  #     - name: Build API
+  #       run: yarn nx run api:build:production
+  #
+  #     - name: Deploy API
+  #       run: yarn firebase deploy --only functions
+  #       env:
+  #         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

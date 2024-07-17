@@ -9,6 +9,8 @@ import { MatDrawerMode } from '@angular/material/sidenav';
 import { MatDialog } from '@angular/material/dialog';
 import { SolveEntryDialogComponent } from './solve-entry.dialog';
 import { SolveService } from '../solve-card/solve.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Platform } from '@angular/cdk/platform';
 
 @Component({
   selector: 'uncube-timer-page',
@@ -27,7 +29,9 @@ export class TimerPageComponent implements OnInit, OnDestroy {
     private scrambleService: ScrambleService,
     private sidenavService: SidenavService,
     private dialog: MatDialog,
-    private solveService: SolveService
+    private solveService: SolveService,
+    private snackBar: MatSnackBar,
+    private platform: Platform
   ) {
     this.breakpointObserver
       .observe([MOBILE, WEB])
@@ -60,14 +64,49 @@ export class TimerPageComponent implements OnInit, OnDestroy {
       .subscribe((isOpen) => {
         this.lastSidenavState = isOpen;
       });
+
+    this.refresh();
+  }
+
+  refresh() {
+    if (!this.platform.isBrowser) {
+      return;
+    }
+
+    this.solveService.getSolves().subscribe((response) => {
+      if (response.status === 200 && response.body) {
+        this.solves = response.body.solves.map((solve) => ({
+          ...solve,
+          syncIcon: 'check_circle',
+        }));
+      } else {
+        this.snackBar.open('Failed to retrieve solves', 'CLOSE', {
+          duration: 5000,
+        });
+      }
+    });
   }
 
   timerStopped(elapsed: number) {
-    this.solves.unshift({
+    const newSolve: Solve = {
       millis: elapsed,
       timestamp: Date.now(),
       scramble: this.scramble,
+    };
+
+    this.solves.unshift(newSolve);
+
+    this.solveService.create(newSolve).subscribe((response) => {
+      if (response.status !== 201 || !response.body) {
+        this.snackBar.open('Failed to upload solve', 'CLOSE', {
+          duration: 5000,
+        });
+      } else {
+        this.solves[0].id = response.body.id;
+        this.solves[0].syncIcon = 'check_circle';
+      }
     });
+
     this.scrambleService
       .generateScramble()
       .then((scramble) => (this.scramble = scramble));
@@ -82,8 +121,20 @@ export class TimerPageComponent implements OnInit, OnDestroy {
   }
 
   discardSolve(solve: Solve, id?: string) {
-    const idx = this.solves.findIndex((x) => x.timestamp === solve.timestamp);
+    const idx = this.solves.findIndex(
+      (x) => x.timestamp === solve.timestamp || x.id === id
+    );
     this.solves.splice(idx, 1);
+
+    if (id) {
+      this.solveService.deleteSolve(id).subscribe((response) => {
+        if (response.status !== 200) {
+          this.snackBar.open('Failed to delete solve', 'CLOSE', {
+            duration: 5000,
+          });
+        }
+      });
+    }
   }
 
   penaltyChange(solve: Solve, event: SolvePenalty | undefined) {
@@ -106,6 +157,19 @@ export class TimerPageComponent implements OnInit, OnDestroy {
   }
 
   solveUpdate(update: Solve) {
-    this.solveService.update(update);
+    if (update.id) {
+      const idx = this.solves.findIndex((solve) => solve.id === update.id);
+      this.solves[idx].syncIcon = 'pending';
+      this.solveService.update(update.id, update).subscribe((response) => {
+        if (response.status !== 200) {
+          this.snackBar.open('Failed to update solve', 'CLOSE', {
+            duration: 5000,
+          });
+          this.solves[idx].syncIcon = 'error';
+        } else {
+          this.solves[idx].syncIcon = 'check_circle';
+        }
+      });
+    }
   }
 }
