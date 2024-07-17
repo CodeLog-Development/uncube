@@ -8,7 +8,7 @@
     "@nestjs/throttler": "^6.0.0",
     "@nestjs/config": "^3.2.3",
     "cookie-parser": "1.4.6",
-    "express": "4.18.2",
+    "express": "4.19.2",
     "firebase-functions": "^5.0.1",
     "firebase-admin": "12.2.0",
     "tslib": "^2.3.0",
