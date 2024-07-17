@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SolveEntryDialogComponent } from './solve-entry.dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [TimerPageComponent, SolveEntryDialogComponent],
@@ -30,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
   ],
 })
 export class TimerPageModule {}
