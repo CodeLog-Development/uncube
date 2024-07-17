@@ -1,4 +1,4 @@
-name: Deploy Frontend
+name: Build and Deploy
 on:
   push:
     branches:
@@ -11,7 +11,7 @@ env:
   INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  deploy_frontend:
+  build_and_deploy:
     runs-on: ubuntu-latest
     environment: Production
     steps:
@@ -53,27 +53,10 @@ jobs:
           image: '${{ env.REGION }}-docker.pkg.dev/qubetime/qubetime-ng-universal/qubetime:latest'
           region: ${{ env.REGION }}
 
-  # deploy_backend:
-  #   runs-on: ubuntu-latest
-  #   environment: Production
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
-  #
-  #     - name: Setup node
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 20
-  #
-  #     - name: Install dependencies
-  #       run: yarn install --frozen-lockfile
-  #
-  #     - name: Build API
-  #       run: yarn nx run api:build:production
-  #
-  #     - name: Deploy API
-  #       run: yarn firebase deploy --only functions
-  #       env:
-  #         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Build API
+        run: yarn nx run api:build:production
+
+      - name: Deploy API
+        run: yarn firebase deploy --only functions
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
