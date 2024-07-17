@@ -54,7 +54,7 @@ jobs:
           region: ${{ env.REGION }}
 
       - name: Build API
-        run: yarn nx run api:build:production
+        run: yarn nx run uncube-api:build:production
 
       - name: Deploy API
         run: yarn firebase deploy --only functions
