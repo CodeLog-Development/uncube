@@ -2,7 +2,7 @@ export interface Solve {
   millis: number;
   penalty?: SolvePenalty;
   timestamp: number;
-  scramble: string;
+  scramble?: string;
   id?: string;
   syncIcon?: string;
 }
