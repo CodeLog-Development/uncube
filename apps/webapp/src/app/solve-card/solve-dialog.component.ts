@@ -7,6 +7,8 @@ import { Solve } from './solve.interface';
   template: `
     <h1 mat-dialog-title>Solve</h1>
     <div mat-dialog-content>
+      <h3>Date</h3>
+      <span>{{ solveDate }}</span>
       <h3>Solve Time</h3>
       <span class="solve-time">
         {{ data.solve.millis | solveTime }}
@@ -33,9 +35,13 @@ export class SolveDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { solve: Solve },
     private dialogRef: MatDialogRef<SolveDialogComponent>
-  ) { }
+  ) {}
 
   closeClick() {
     this.dialogRef.close();
+  }
+
+  get solveDate(): string {
+    return new Date(this.data.solve.timestamp).toLocaleString();
   }
 }

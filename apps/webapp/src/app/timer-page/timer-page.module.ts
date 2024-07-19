@@ -14,6 +14,7 @@ import { SolveEntryDialogComponent } from './solve-entry.dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { StatisticsModule } from '../statistics/statistics.module';
 
 @NgModule({
   declarations: [TimerPageComponent, SolveEntryDialogComponent],
@@ -21,6 +22,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FormsModule,
     CommonModule,
     TimerModule,
+    StatisticsModule,
     TimerPageRoutingModule,
     MatSidenavModule,
     SolveCardModule,
