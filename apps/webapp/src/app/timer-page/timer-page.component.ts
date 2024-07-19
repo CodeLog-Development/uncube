@@ -79,6 +79,9 @@ export class TimerPageComponent implements OnInit, OnDestroy {
           ...solve,
           syncIcon: 'check_circle',
         }));
+        this.solves.sort((a, b) => {
+          return b.timestamp - a.timestamp;
+        });
       } else {
         this.snackBar.open('Failed to retrieve solves', 'CLOSE', {
           duration: 5000,
