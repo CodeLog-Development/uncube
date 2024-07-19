@@ -5,7 +5,10 @@ export function formatSolveTime(millis: number): string {
   const minutes = ('00' + Math.floor(millis / (1000 * 60)).toFixed(0)).slice(
     -2
   );
-  const millisStr = ('000' + (millis % 1000).toString())
+  const millisStr = (millis % 1000)
+    .toString()
+    .split('.')[0]
+    .padStart(3, '0')
     .slice(-3)
     .substring(0, 2);
 
