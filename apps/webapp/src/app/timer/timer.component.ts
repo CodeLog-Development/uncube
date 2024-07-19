@@ -112,7 +112,6 @@ export class TimerComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this.touchTarget);
     if (this.isBrowser) {
       if (!this.isMobile) {
         window.addEventListener('keydown', (event) => {
@@ -128,14 +127,12 @@ export class TimerComponent implements OnChanges, OnInit, OnDestroy {
       } else {
         const elem = document.getElementById(this.touchTarget);
         elem?.addEventListener('touchstart', () => {
-          console.log('down');
           if (!this.disabled) {
             this.keyDown();
           }
         });
 
         elem?.addEventListener('touchend', () => {
-          console.log('up');
           if (!this.disabled) {
             this.keyUp();
           }
