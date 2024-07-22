@@ -61,7 +61,7 @@
     "@angular/language-service": "18.0.7",
     "@nx/cypress": "19.4.3",
     "@nx/eslint": "19.4.3",
-    "@nx/eslint-plugin": "19.4.3",
+    "@nx/eslint-plugin": "19.5.1",
     "@nx/jest": "19.4.3",
     "@nx/js": "19.4.3",
     "@nx/web": "19.4.3",
