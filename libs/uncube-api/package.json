@@ -22,7 +22,7 @@
     "class-validator": "^0.14.1"
   },
   "scripts": {
-    "emulators": "cd .. && yarn nx build uncube-api && yarn firebase emulators:start"
+    "emulators": "cd .. && yarn nx build uncube-api && yarn firebase emulators:start --export-on-exit --import=.fbdata"
   },
   "type": "commonjs",
   "main": "./src/index.js",
