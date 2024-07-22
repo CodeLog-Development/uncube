@@ -17,6 +17,10 @@ $theme: mat.m2-define-dark-theme(
 @include mat.all-component-themes($theme);
 @include mat.typography-hierarchy($theme);
 
+:root {
+  --background: rgb(48, 48, 48);
+}
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

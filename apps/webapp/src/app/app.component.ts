@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from './auth/login.dialog';
 import { RegisterDialogComponent } from './auth/register.dialog';
 import { Platform } from '@angular/cdk/platform';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'uncube-root',
@@ -25,6 +26,8 @@ export class AppComponent implements OnDestroy, OnInit {
     private sidenavService: SidenavService,
     private authService: AuthService,
     private dialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private platform: Platform
   ) {
     this.breakpointObserver
@@ -79,5 +82,11 @@ export class AppComponent implements OnDestroy, OnInit {
 
   registerClick() {
     this.dialog.open(RegisterDialogComponent);
+  }
+
+  statisticsClick() {
+    this.router.navigate(['statistics'], {
+      relativeTo: this.activatedRoute.parent,
+    });
   }
 }

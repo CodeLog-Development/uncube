@@ -8,6 +8,11 @@ const routes: Route[] = [
       import('./timer-page/timer-page.module').then((m) => m.TimerPageModule),
   },
   {
+    path: 'statistics',
+    loadChildren: () =>
+      import('./stats-page/stats-page.module').then((m) => m.StatsPageModule),
+  },
+  {
     path: '',
     redirectTo: 'timer',
     pathMatch: 'full',
@@ -20,4 +25,4 @@ const routes: Route[] = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

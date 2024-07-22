@@ -28,7 +28,8 @@
           "apps/webapp/src/styles.scss"
         ],
         "allowedCommonJsDependencies": [
-          "cubejs"
+          "cubejs",
+          "rfdc"
         ],
         "scripts": [],
         "serviceWorker": true,

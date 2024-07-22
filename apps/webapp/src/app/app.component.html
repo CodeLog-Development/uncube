@@ -11,21 +11,27 @@
     UnCube
   </a>
   <span class="spacer"></span>
-  <div *ngIf="!isMobile && !loggedIn" class="web-controls">
+  <div *ngIf="!isMobile" class="web-controls">
+    <a mat-button (click)="statisticsClick()">Statistics</a>
     <a *ngIf="!loggedIn" mat-button (click)="loginClick()">Login</a>
     <a *ngIf="!loggedIn" mat-button (click)="registerClick()">Register</a>
   </div>
 
   <span class="beta-tag">BETA</span>
 
-  <div *ngIf="isMobile && !loggedIn" class="mobile-controls">
+  <div *ngIf="isMobile" class="mobile-controls">
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
 
     <mat-menu #menu>
-      <button mat-menu-item (click)="loginClick()">Login</button>
-      <button mat-menu-item (click)="registerClick()">Register</button>
+      <button *ngIf="!loggedIn" mat-menu-item (click)="loginClick()">
+        Login
+      </button>
+      <button *ngIf="!loggedIn" mat-menu-item (click)="registerClick()">
+        Register
+      </button>
+      <button mat-menu-item (click)="statisticsClick()">Statistics</button>
     </mat-menu>
   </div>
 </mat-toolbar>

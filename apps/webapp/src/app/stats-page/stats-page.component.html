@@ -1,0 +1,17 @@
+<div class="page-container">
+  <div class="chart-container">
+    <ngx-charts-line-chart
+      class="unselectable chart"
+      [view]="view"
+      [animations]="false"
+      [results]="solveData()"
+      xAxisLabel="Solve"
+      yAxisLabel="Time (s)"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showYAxisLabel]="true"
+      [showXAxisLabel]="true"
+      [timeline]="true"
+    ></ngx-charts-line-chart>
+  </div>
+</div>

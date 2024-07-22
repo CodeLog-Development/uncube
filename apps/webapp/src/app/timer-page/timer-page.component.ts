@@ -37,7 +37,6 @@ export class TimerPageComponent implements OnInit, OnDestroy {
       .observe([MOBILE, WEB])
       .pipe(takeUntil(this.destroyed))
       .subscribe((result) => {
-        console.log(result);
         for (const key of Object.keys(result.breakpoints)) {
           if (key === MOBILE) {
             this.isMobile = result.breakpoints[key];

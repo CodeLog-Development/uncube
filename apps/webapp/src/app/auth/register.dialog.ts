@@ -78,7 +78,7 @@ export class RegisterDialogComponent {
 
   registerClick() {
     if (this.passwordFormControl.value !== this.confirmFormControl.value) {
-      this.snackBar.open('Passwords do not match', 'CLOSE');
+      this.snackBar.open('Passwords do not match', 'CLOSE', { duration: 5000 });
       return;
     }
 
@@ -92,7 +92,9 @@ export class RegisterDialogComponent {
       .pipe(
         catchError((err: HttpErrorResponse) => {
           console.log(err);
-          this.snackBar.open(`Error: ${err.error.message}`, 'CLOSE');
+          this.snackBar.open(`Error: ${err.error.message}`, 'CLOSE', {
+            duration: 5000,
+          });
           this.loading = false;
           return of(undefined);
         })
@@ -101,7 +103,8 @@ export class RegisterDialogComponent {
         if (result !== undefined) {
           this.snackBar.open(
             'User registered. Please confirm your email.',
-            'CLOSE'
+            'CLOSE',
+            { duration: 2000 }
           );
           this.loading = false;
           this.dialogRef.close();
