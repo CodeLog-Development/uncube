@@ -43,6 +43,7 @@
     "firebase-tools": "^13.13.3",
     "handlebars": "^4.7.8",
     "nodemailer": "^6.9.14",
+    "react-scripts": "^5.0.1",
     "resolve-from": "^5.0.0",
     "rxjs": "~7.8.0",
     "supports-color": "^9.4.0",
