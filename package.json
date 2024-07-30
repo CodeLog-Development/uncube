@@ -30,7 +30,7 @@
     "@nx-tools/nx-container": "^6.0.1",
     "@nx/angular": "19.5.1",
     "@nx/nest": "19.5.1",
-    "@types/cookie-parser": "^1.4.5",
+    "@types/cookie-parser": "^1.4.7",
     "@types/nodemailer": "^6.4.15",
     "ajv": "8.17.1",
     "argon2": "^0.40.3",
