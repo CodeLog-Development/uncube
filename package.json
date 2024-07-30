@@ -75,7 +75,7 @@
     "@typescript-eslint/parser": "7.16.1",
     "@typescript-eslint/utils": "7.16.1",
     "browser-sync": "^3.0.0",
-    "cypress": "13.13.0",
+    "cypress": "13.13.1",
     "eslint": "8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-cypress": "^2.13.4",
