@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import InputComponent from '@/components/InputComponent.vue';
 import SnackBarComponent from '@/components/SnackBarComponent.vue';
 import type { ApiResponse } from '@/interfaces/response';
 import { authServiceKey } from '@/keys';
@@ -57,10 +58,8 @@ function submitClick() {
   <div class="flex-1 self-center flex flex-row place-items-center justify-center">
     <div
       class="text-center bg-gray-700 rounded-lg flex flex-col place-content-center shadow-xl place-items-center p-5 space-y-5">
-      <input class="ring-blue-500 ring-2 text-center rounded-md p-2 text-white" autocomplete="email" placeholder="Email"
-        v-model="email" />
-      <input class="ring-blue-500 ring-2 text-center rounded-md p-2 text-white" placeholder="Password"
-        autocomplete="current-password" type="password" v-model="password" />
+      <InputComponent placeholder="Email" autocomplete="email" v-model="email" />
+      <InputComponent placeholder="Password" autocomplete="current-password" v-model="password" type="password" />
       <button
         class="text-white rounded-md bg-blue-500 w-20 px-3 py-2 shadow-md hover:brightness-85 active:brightness-110 inline-flex w-fit items-center align-center"
         @click="submitClick">

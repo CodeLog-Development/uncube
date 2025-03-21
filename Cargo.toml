@@ -1,0 +1,10 @@
+[package]
+name = "uncube"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = [".", "entity", "service", "migration", "api"]
+
+[dependencies]
+api = { path = "./api" }
