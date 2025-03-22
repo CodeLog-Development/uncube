@@ -1,3 +1,5 @@
 api/target
+target
 .direnv
 .env
+*.pem

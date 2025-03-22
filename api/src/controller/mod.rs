@@ -1,5 +1,3 @@
 pub mod auth;
 pub mod solve;
 pub mod user;
-
-pub use sea_orm;
