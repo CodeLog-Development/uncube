@@ -26,7 +26,10 @@ pub struct AuthRequest {
 }
 
 #[derive(Debug, Serialize)]
-pub struct AuthResponse(String);
+pub struct AuthResponse {
+    user: UserResponse,
+    token: String,
+}
 
 pub async fn authenticate(
     State(state): State<Arc<ServerState>>,
@@ -76,7 +79,17 @@ pub async fn authenticate(
     }
 
     match AuthService::generate_jwt(user.id).await {
-        Ok(x) => Ok((StatusCode::OK, Json(AuthResponse(x)))),
+        Ok(token) => Ok((
+            StatusCode::OK,
+            Json(AuthResponse {
+                token,
+                user: UserResponse {
+                    id: user.id,
+                    username: user.username,
+                    email: user.email,
+                },
+            }),
+        )),
         Err(err) => {
             tracing::error!(error = %err, "Failed to generate JWT");
             Err((

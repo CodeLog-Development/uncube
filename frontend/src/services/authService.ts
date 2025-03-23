@@ -1,4 +1,4 @@
-import type { UserResponse } from '@/interfaces/auth';
+import type { AuthResponse, UserResponse } from '@/interfaces/auth';
 import type { ApiResponse } from '@/interfaces/response';
 import { tap, type Observable } from 'rxjs';
 import { useHttp } from './httpService';
@@ -12,17 +12,15 @@ export class AuthService {
     this.store = useAuthStore();
   }
 
-  login(email: string, password: string): Observable<ApiResponse<UserResponse>> {
+  login(email: string, password: string): Observable<AuthResponse> {
     return this.http
-      .post<ApiResponse<UserResponse>>(`${import.meta.env.VITE_API_URL}/auth`, {
+      .post<AuthResponse>(`${import.meta.env.VITE_API_URL}/auth`, {
         email,
         password,
       })
       .pipe(
         tap((response) => {
-          if (response?.ok) {
-            this.store.login(response.ok);
-          }
+          this.store.login(response);
         }),
       );
   }
