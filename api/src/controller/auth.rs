@@ -17,6 +17,7 @@ pub fn create_router() -> axum::Router<Arc<ServerState>> {
     axum::Router::new()
         .route("/", post(authenticate))
         .route("/whoami", get(whoami))
+        .route("/refresh", post(refresh_jwt))
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -26,9 +27,11 @@ pub struct AuthRequest {
 }
 
 #[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct AuthResponse {
     user: UserResponse,
     token: String,
+    refresh_token: String,
 }
 
 pub async fn authenticate(
@@ -78,7 +81,16 @@ pub async fn authenticate(
         _ => (),
     }
 
-    match AuthService::generate_jwt(user.id).await {
+    let secret = hex::encode(rand::random::<[u8; 16]>());
+    if let Err(err) = AuthService::create_refresh_token(&state.db, user.id, secret.clone()).await {
+        tracing::error!(error = %err, "Failed to generate refresh token");
+        return Err((
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(ApiError::new("Failed to create refresh token")),
+        ));
+    }
+
+    match AuthService::generate_jwt(user.id, user.username.clone(), user.email.clone()).await {
         Ok(token) => Ok((
             StatusCode::OK,
             Json(AuthResponse {
@@ -88,6 +100,7 @@ pub async fn authenticate(
                     username: user.username,
                     email: user.email,
                 },
+                refresh_token: secret,
             }),
         )),
         Err(err) => {
@@ -105,6 +118,80 @@ pub async fn whoami(_: State<Arc<ServerState>>, user: UserResponse) -> Json<User
     Json(user)
 }
 
+#[derive(Debug, Clone, Deserialize)]
+pub struct RefreshTokenRequest {
+    pub secret: String,
+}
+
+#[derive(Debug, Clone, Serialize)]
+pub struct RefreshTokenResponse {
+    pub secret: String,
+    pub token: String,
+}
+
+pub async fn refresh_jwt(
+    State(state): State<Arc<ServerState>>,
+    Json(req): Json<RefreshTokenRequest>,
+) -> Result<(StatusCode, Json<RefreshTokenResponse>), (StatusCode, Json<ApiError>)> {
+    let refresh_token = AuthService::find_refresh_token_by_secret(&state.db, &req.secret)
+        .await
+        .map_err(|err| {
+            tracing::error!(error = %err, "Failed to fetch refresh token from database");
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(ApiError::new("Failed to query database.")),
+            )
+        })?
+        .ok_or((
+            StatusCode::UNAUTHORIZED,
+            Json(ApiError::new("Expired or invalid refresh token")),
+        ))?;
+
+    let user = UserService::find_user_by_id(&state.db, refresh_token.user_id)
+        .await
+        .map_err(|err| {
+            tracing::error!(error = %err, "Failed to find user in database");
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(ApiError::new("Failed to find user in database.")),
+            )
+        })?
+        .ok_or((
+            StatusCode::BAD_REQUEST,
+            Json(ApiError::new("The associated user does not exist.")),
+        ))?;
+
+    let secret = hex::encode(rand::random::<[u8; 16]>());
+    if let Err(err) = AuthService::create_refresh_token(&state.db, user.id, secret.clone()).await {
+        tracing::error!(error = %err, "Failed to create refresh token");
+        return Err((
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(ApiError::new("Failed to generate new refresh token")),
+        ));
+    }
+
+    let token = AuthService::generate_jwt(user.id, user.username, user.email)
+        .await
+        .map_err(|err| {
+            tracing::error!(error = %err, "Failed to generate JWT");
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(ApiError::new("Failed to generate JWT")),
+            )
+        })?;
+
+    match AuthService::use_refresh_token(&state.db, refresh_token.id).await {
+        Ok(_) => Ok((StatusCode::OK, Json(RefreshTokenResponse { secret, token }))),
+        Err(err) => {
+            tracing::error!(error = %err, "Failed to invalidate refresh token");
+            Err((
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(ApiError::new("Failed to invalidate refresh token")),
+            ))
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize)]
 pub struct UserResponse {
     pub id: i32,
@@ -117,7 +204,7 @@ impl FromRequestParts<Arc<ServerState>> for UserResponse {
 
     async fn from_request_parts(
         parts: &mut Parts,
-        state: &Arc<ServerState>,
+        _: &Arc<ServerState>,
     ) -> Result<Self, Self::Rejection> {
         let token = parts
             .headers
@@ -156,25 +243,10 @@ impl FromRequestParts<Arc<ServerState>> for UserResponse {
                     }
                 })?;
 
-        match UserService::find_user_by_id(&state.db, token_data.claims.user_id).await {
-            Ok(Some(user)) => Ok(UserResponse {
-                id: user.id,
-                email: user.email,
-                username: user.username,
-            }),
-            Ok(None) => Err((
-                StatusCode::BAD_REQUEST,
-                Json(ApiError::new(
-                    "The user associated with this token no longer exists",
-                )),
-            )),
-            Err(err) => {
-                tracing::error!(error = %err, "Failed to query user in database");
-                Err((
-                    StatusCode::INTERNAL_SERVER_ERROR,
-                    Json(ApiError::new("Failed to get user information")),
-                ))
-            }
-        }
+        Ok(UserResponse {
+            id: token_data.claims.user_id,
+            username: token_data.claims.username,
+            email: token_data.claims.email,
+        })
     }
 }

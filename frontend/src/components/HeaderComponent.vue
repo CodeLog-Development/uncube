@@ -2,11 +2,14 @@
 import { useAuthStore } from '@/stores/authStore';
 import { useRouter } from 'vue-router';
 
+const emit = defineEmits(['logout']);
+
 const router = useRouter();
 const store = useAuthStore();
 
 function logoutClick() {
   store.logout();
+  emit('logout');
 }
 
 const navItems: { path: string; name: string }[] = [];
@@ -51,13 +54,14 @@ const noUserNavItems: { path: string; name: string }[] = [
           {{ item.name }}
         </button>
       </div>
-      <button
-        class="w-fit text-white p-1 rounded-md hover:backdrop-brightness-110 active:backdrop-brightness-85"
-        v-if="store.isLoggedIn"
-        @click="logoutClick"
-      >
-        Logout
-      </button>
+      <div v-if="store.isLoggedIn" class="space-x-3">
+        <button
+          class="w-fit text-white p-1 rounded-md hover:backdrop-brightness-110 active:backdrop-brightness-85"
+          @click="logoutClick"
+        >
+          Logout
+        </button>
+      </div>
     </div>
   </div>
 </template>

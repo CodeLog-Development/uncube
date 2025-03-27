@@ -1,4 +1,3 @@
-export interface ApiResponse<T> {
-  ok?: T;
-  err?: string;
+export interface ApiError {
+  error: string;
 }

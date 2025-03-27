@@ -1,6 +1,5 @@
 use ::entity::{puzzle, solve};
-use sea_orm::*;
-use std::time::SystemTime;
+use sea_orm::{prelude::*, *};
 use thiserror::Error;
 
 pub struct SolveService;
@@ -30,7 +29,7 @@ impl SolveService {
         Ok(solve::ActiveModel {
             time: Set(time),
             scramble: Set(scramble),
-            created_at: Set(SystemTime::now().into()),
+            created_at: Set(Default::default()),
             owner_id: Set(user_id),
             puzzle_id: Set(puzzle.id),
             ..Default::default()

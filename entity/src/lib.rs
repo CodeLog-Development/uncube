@@ -3,5 +3,6 @@
 pub mod prelude;
 
 pub mod puzzle;
+pub mod refresh_token;
 pub mod solve;
 pub mod user;

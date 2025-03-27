@@ -122,6 +122,7 @@ dependencies = [
  "axum",
  "dotenvy",
  "entity",
+ "hex",
  "jsonwebtoken",
  "migration",
  "rand 0.8.5",

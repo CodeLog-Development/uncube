@@ -4,34 +4,23 @@ import SpinnerComponent from '@/components/SpinnerComponent.vue';
 import { authServiceKey } from '@/keys';
 import router from '@/router';
 import { AuthService } from '@/services/authService';
+import { useSnackBar } from '@/services/snackBar';
+import { catchError, of } from 'rxjs';
 import { inject, ref } from 'vue';
 
 const authService = inject<AuthService>(authServiceKey);
 
-const message = ref('');
-const showMessage = ref(false);
 const username = ref('');
 const email = ref('');
 const password = ref('');
 const confirm = ref('');
 const loading = ref(false);
-
-let timeoutId: number | undefined;
-
-function closeSnackBar() {
-  showMessage.value = false;
-  if (timeoutId !== undefined) {
-    clearTimeout(timeoutId);
-  }
-}
+const { open, openSubject } = useSnackBar();
 
 function snackBar(msg: string, timeout?: number) {
-  closeSnackBar();
-  message.value = msg;
-  showMessage.value = true;
-  if (timeout) {
-    timeoutId = setTimeout(() => (showMessage.value = false), timeout);
-  }
+  open(msg, {
+    duration: timeout,
+  });
 }
 
 function submitClick() {
@@ -57,13 +46,24 @@ function submitClick() {
 
   loading.value = true;
 
-  authService?.register(username.value, email.value, password.value).subscribe((response) => {
-    loading.value = false;
-    if (response?.ok !== undefined) {
-      snackBar('Succesfully registered');
-      setTimeout(() => router.push('/login'), 3000);
-    }
-  });
+  authService
+    ?.register(username.value, email.value, password.value)
+    .pipe(
+      catchError((err: Response) => {
+        err.json().then((err) => {
+          console.error(err);
+          open(err.error, { duration: 5000 });
+        });
+        return of(null);
+      }),
+    )
+    .subscribe((response) => {
+      loading.value = false;
+      if (response !== null) {
+        snackBar('Succesfully registered');
+        setTimeout(() => router.push('/login'), 3000);
+      }
+    });
 }
 </script>
 
@@ -108,5 +108,5 @@ function submitClick() {
     </div>
   </div>
 
-  <SnackBarComponent :message="message" :show="showMessage" @close="closeSnackBar" />
+  <SnackBarComponent :openSubject />
 </template>

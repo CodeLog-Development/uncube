@@ -14,8 +14,16 @@ pub struct Model {
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {
+    #[sea_orm(has_many = "super::refresh_token::Entity")]
+    RefreshToken,
     #[sea_orm(has_many = "super::solve::Entity")]
     Solve,
+}
+
+impl Related<super::refresh_token::Entity> for Entity {
+    fn to() -> RelationDef {
+        Relation::RefreshToken.def()
+    }
 }
 
 impl Related<super::solve::Entity> for Entity {

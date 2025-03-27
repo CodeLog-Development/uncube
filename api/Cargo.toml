@@ -18,3 +18,4 @@ service = { path = "../service" }
 argon2 = "0.5.3"
 rand = "0.8"
 jsonwebtoken = "9.3.1"
+hex = "0.4.3"

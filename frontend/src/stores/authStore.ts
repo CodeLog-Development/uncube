@@ -1,27 +1,19 @@
-import type { AuthResponse, UserResponse } from '@/interfaces/auth';
+import type { AuthResponse, Claims, UserResponse } from '@/interfaces/auth';
 import { defineStore } from 'pinia';
 
-interface TokenPayload {
-  user_id: number;
-  exp: number;
-}
-
 export const useAuthStore = defineStore('auth', {
-  state: (): { isLoggedIn: boolean; user?: UserResponse; token?: string } => {
-    const token = localStorage.getItem('token');
-
-    if (token !== null) {
-      const parts = token.split('.');
-      if (parts.length === 3) {
-        const encodedPayload = parts[1].replace('-', '+').replace('_', '/');
-        const payload = JSON.parse(window.atob(encodedPayload)) as TokenPayload;
-        if (payload.exp * 1000 > Date.now()) {
-          return { isLoggedIn: true, token };
-        }
-      }
+  state: (): {
+    isLoggedIn: boolean;
+    user?: UserResponse;
+    token?: string;
+    refreshToken?: string;
+  } => {
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (refreshToken != null) {
+      return { isLoggedIn: false, refreshToken };
+    } else {
+      return { isLoggedIn: false };
     }
-
-    return { isLoggedIn: false };
   },
 
   actions: {
@@ -29,14 +21,27 @@ export const useAuthStore = defineStore('auth', {
       this.isLoggedIn = true;
       this.user = res.user;
       this.token = res.token;
-      localStorage.setItem('token', res.token);
+      this.refreshToken = res.refreshToken;
+      localStorage.setItem('refreshToken', res.refreshToken);
+    },
+
+    refresh(token: string, claims: Claims, secret: string) {
+      this.isLoggedIn = true;
+      this.user = {
+        id: claims.user_id,
+        username: claims.username,
+        email: claims.email,
+      };
+      this.token = token;
+      this.refreshToken = secret;
+      localStorage.setItem('refreshToken', secret);
     },
 
     logout() {
       this.isLoggedIn = false;
       this.user = undefined;
       this.token = undefined;
-      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
     },
   },
 });

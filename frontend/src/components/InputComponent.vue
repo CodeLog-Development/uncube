@@ -6,6 +6,8 @@ const props = defineProps({
 });
 
 const model = defineModel<string>();
+
+const emit = defineEmits(['submit']);
 </script>
 
 <template>
@@ -15,6 +17,7 @@ const model = defineModel<string>();
     :autocomplete="props.autocomplete"
     :type="props.type"
     v-model="model"
+    @keypress.enter="emit('submit')"
   />
 </template>
 

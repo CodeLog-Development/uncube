@@ -29,7 +29,7 @@ impl MigrationTrait for Migration {
                     .col(timestamp(Solve::CreatedAt).not_null())
                     .col(integer(Solve::OwnerId).not_null())
                     .col(double(Solve::Time).not_null())
-                    .col(string(Solve::Scramble))
+                    .col(string_null(Solve::Scramble))
                     .col(integer(Solve::PuzzleId))
                     .foreign_key(
                         ForeignKey::create()

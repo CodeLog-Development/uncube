@@ -7,7 +7,7 @@ use sea_orm::entity::prelude::*;
 pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
-    pub created_at: DateTimeUtc,
+    pub created_at: DateTime,
     pub owner_id: i32,
     #[sea_orm(column_type = "Double")]
     pub time: f64,
@@ -21,16 +21,16 @@ pub enum Relation {
         belongs_to = "super::puzzle::Entity",
         from = "Column::PuzzleId",
         to = "super::puzzle::Column::Id",
-        on_update = "Restrict",
-        on_delete = "Restrict"
+        on_update = "NoAction",
+        on_delete = "NoAction"
     )]
     Puzzle,
     #[sea_orm(
         belongs_to = "super::user::Entity",
         from = "Column::OwnerId",
         to = "super::user::Column::Id",
-        on_update = "Restrict",
-        on_delete = "Restrict"
+        on_update = "NoAction",
+        on_delete = "NoAction"
     )]
     User,
 }
